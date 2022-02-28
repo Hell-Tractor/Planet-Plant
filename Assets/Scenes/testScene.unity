@@ -323,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Width: 6
   Height: 4
+  _itemFollowMouse: {fileID: 0}
 --- !u!1 &1738719792
 GameObject:
   m_ObjectHideFlags: 0

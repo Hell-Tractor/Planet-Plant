@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -10,10 +11,17 @@ public class Item : MonoBehaviour {
     public string Name;
     [Tooltip("物品描述"), Multiline(3)]
     public string Description;
-    [Tooltip("当前所有者的出售价格")]
+    [Tooltip("当前所有者的出售单价")]
     public int Price;
     [Tooltip("物品类型")]
     public ItemType Type;
+    [Tooltip("物品个数"), Range(1, 999)]
+    public int Count = 1;
+
+    private void Start() {
+        this.UpdateCount();
+        this.GetComponent<RectTransform>().localPosition = Vector3.zero;
+    }
 
     /// <summary>
     /// 判断两个物品是否相同
@@ -21,6 +29,15 @@ public class Item : MonoBehaviour {
     /// <param name="other">要比较的物品</param>
     public bool EqualTo(Item other) {
         return Id == other.Id;
+    }
+
+    /// <summary>
+    /// 更新数量显示
+    /// </summary>
+    public void UpdateCount() {
+        var textComponent = this.GetComponentInChildren<TextMeshProUGUI>();
+        if (textComponent)
+            textComponent.text = Count.ToString();
     }
 
     public enum ItemType {
