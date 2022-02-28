@@ -244,7 +244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75.6, y: -115.3}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
   m_SizeDelta: {x: 100, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1631632250
@@ -260,15 +260,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 2
-    m_Right: 2
-    m_Top: 87
+    m_Left: 3
+    m_Right: 3
+    m_Top: 89
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 16, y: 16}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 14, y: 14}
+  m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1631632251
@@ -467,7 +467,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

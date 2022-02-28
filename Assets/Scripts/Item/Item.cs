@@ -28,7 +28,7 @@ public class Item : MonoBehaviour {
     /// </summary>
     /// <param name="other">要比较的物品</param>
     public bool EqualTo(Item other) {
-        return Id == other.Id;
+        return other && Id == other.Id;
     }
 
     /// <summary>
