@@ -117,5 +117,5 @@ MonoBehaviour:
   Width: 6
   Height: 4
   SlotPrefab: {fileID: 3249180032422103845, guid: b9aa55ed25704274faf31b698279ae33, type: 3}
-  InventoryData: {fileID: 11400000, guid: 6a3f91536990c8d4895ec8b2ef185d46, type: 2}
+  InventoryData: {fileID: 0}
   _itemFollowMouse: {fileID: 0}
