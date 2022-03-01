@@ -50,4 +50,12 @@ public class Slot : MonoBehaviour
             _item = null;
         }
     }
+
+    /// <summary>
+    /// 获取当前格子中物品
+    /// </summary>
+    /// <returns></returns>
+    public Item GetItem() {
+        return _item;
+    }
 }

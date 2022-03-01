@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe8516616ba0a84bb6e8477c724efcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: planetplant:test
+  Id: planetplant:testItem
   Name: "\u6D4B\u8BD5\u7269\u54C1"
   Description: "\u8FD9\u662F\u4E00\u4E2A\u7528\u4E8E\u6D4B\u8BD5\u7684\u7269\u54C1"
   Price: 0
