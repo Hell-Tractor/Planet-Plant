@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, Utils.ISaveLoad
 {
     [Tooltip("物品栏宽度"), Range(1, 16)]
     public int Width = 9;
@@ -29,12 +29,12 @@ public class Inventory : MonoBehaviour
             _slots[i] = placeHolder.GetComponent<Slot>();
         }
         // 加载物品
-        this.LoadData(InventoryData);
+        this.Load(InventoryData);
     }
 
     public void OnDisable() {
         // 保存物品
-        this.SaveData(InventoryData);
+        this.Save(InventoryData);
     }
     
     public void Update() {
@@ -56,11 +56,16 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
     /// 将数据保存到InventoryData中
     /// </summary>
-    public void SaveData(InventoryData data) {
+    public void Save(ScriptableObject originData) {
+        var data = originData as InventoryData;
+        if (data == null) {
+            Debug.LogWarning("InventoryData is null");
+            return;
+        }
         data.Items.Clear();
         foreach (var i in _slots) {
             if (i.GetItem() != null) {
@@ -80,7 +85,12 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// 从InventoryData中读取数据
     /// </summary>
-    public void LoadData(InventoryData data) {
+    public void Load(ScriptableObject originData) {
+        var data = originData as InventoryData;
+        if (data == null) {
+            Debug.LogWarning("InventoryData is null");
+            return;
+        }
         for (int i = 0; i < data.Items.Count; ++i) {
             if (i >= _slots.Length) {
                 Debug.LogWarning("InventoryData中的物品数量超过了Inventory的容量，已跳过");
