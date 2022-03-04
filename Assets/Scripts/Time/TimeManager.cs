@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
-// TODO 创建自定义每日小时数的时间类并予以替换
-public class TimeManager : MonoBehaviour, Utils.ISaveLoad
+/// <summary>
+/// 时间管理器
+/// </summary>
+public class TimeManager : MonoBehaviour, ISaveLoad
 {
     [SerializeField, Tooltip("起始时间，若加载时间则会被覆盖")]
     public pp.DateTime StartTime;
@@ -17,17 +20,20 @@ public class TimeManager : MonoBehaviour, Utils.ISaveLoad
     [Header("游戏显示时间缩放比例")]
     [Range(0, 10)]
     public float HourScale = 1f;
-    [HideInInspector]
-    public bool AutoSaveLoad { get; set; } = true;
     private bool _isPaused = false;
     private pp.DateTime _currentTime;
     private List<Tuple<pp.DateTime, Action>> _timedTasks = new List<Tuple<pp.DateTime, Action>>();
+    /// <summary>
+    /// 当日期更新时触发
+    /// </summary>
     public event Action OnDayChange;
     
     private void Start() {
         _currentTime = StartTime;
         _currentTime.HourPerDay = HourPerDay;
         CurrentTime = _currentTime.ToString();
+        // 启用自动保存/加载
+        this.EnableAutoSaveLoad();
     }
 
     private void Update() {
@@ -71,9 +77,9 @@ public class TimeManager : MonoBehaviour, Utils.ISaveLoad
     public void Resume() {
         _isPaused = false;
     }
-
-    public void Save(ScriptableObject originData) {
-        var data = originData as TimeManagerData;
+    #region ISaveLoad
+    public void Save() {
+        var data = this.GetDataContainer() as TimeManagerData;
         if (data == null) {
             Debug.LogWarning("TimeManagerData is null");
             return;
@@ -82,8 +88,8 @@ public class TimeManager : MonoBehaviour, Utils.ISaveLoad
         data.TimedTasks = _timedTasks;
     }
 
-    public void Load(ScriptableObject originData) {
-        var data = originData as TimeManagerData;
+    public void Load() {
+        var data = this.GetDataContainer() as TimeManagerData;
         if (data == null) {
             Debug.LogWarning("TimeManagerData is null");
             return;
@@ -91,4 +97,9 @@ public class TimeManager : MonoBehaviour, Utils.ISaveLoad
         _currentTime = data.CurrentTime;
         _timedTasks = data.TimedTasks;
     }
+
+    public ScriptableObject GetDataContainer() {
+        return TimeManagerData;
+    }
+    #endregion
 }

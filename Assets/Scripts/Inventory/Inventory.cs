@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utils;
 
-public class Inventory : MonoBehaviour, Utils.ISaveLoad
+/// <summary>
+/// 物品栏
+/// </summary>
+public class Inventory : MonoBehaviour, ISaveLoad
 {
     [Tooltip("物品栏宽度"), Range(1, 16)]
     public int Width = 9;
@@ -16,8 +20,6 @@ public class Inventory : MonoBehaviour, Utils.ISaveLoad
 
     [HideInInspector]
     public Item _itemFollowMouse = null;
-    [HideInInspector]
-    public bool AutoSaveLoad { get; set; } = true;
     
     protected Slot[] _slots;
 
@@ -31,12 +33,14 @@ public class Inventory : MonoBehaviour, Utils.ISaveLoad
             _slots[i] = placeHolder.GetComponent<Slot>();
         }
         // 加载物品
-        this.Load(InventoryData);
+        this.Load();
+        // 关闭自动保存/加载
+        this.DisableAutoSaveLoad();
     }
 
     public void OnDisable() {
         // 保存物品
-        this.Save(InventoryData);
+        this.Save();
     }
     
     public void Update() {
@@ -59,11 +63,9 @@ public class Inventory : MonoBehaviour, Utils.ISaveLoad
         }
     }
     
-    /// <summary>
-    /// 将数据保存到InventoryData中
-    /// </summary>
-    public void Save(ScriptableObject originData) {
-        var data = originData as InventoryData;
+    #region ISaveLoad
+    public void Save() {
+        var data = this.GetDataContainer() as InventoryData;
         if (data == null) {
             Debug.LogWarning("InventoryData is null");
             return;
@@ -84,11 +86,8 @@ public class Inventory : MonoBehaviour, Utils.ISaveLoad
         }
     }
 
-    /// <summary>
-    /// 从InventoryData中读取数据
-    /// </summary>
-    public void Load(ScriptableObject originData) {
-        var data = originData as InventoryData;
+    public void Load() {
+        var data = this.GetDataContainer() as InventoryData;
         if (data == null) {
             Debug.LogWarning("InventoryData is null");
             return;
@@ -111,4 +110,9 @@ public class Inventory : MonoBehaviour, Utils.ISaveLoad
             }
         }
     }
+
+    public ScriptableObject GetDataContainer() {
+        return InventoryData;
+    }
+    #endregion
 }
