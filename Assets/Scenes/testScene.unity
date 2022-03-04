@@ -237,13 +237,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartTime:
-    _dateTime: 0001/1/1 0:00:00
+    Day: 1
+    Hour: 0
+    Minute: 0
+    Second: 0
   CurrentTime: 
   TimeManagerData: {fileID: 0}
   TimeRate: 60
+  HourPerDay: 1
   HourScale: 1
-  MinuteScale: 1
-  SecondScale: 1
 --- !u!4 &1460961479
 Transform:
   m_ObjectHideFlags: 0

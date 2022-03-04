@@ -1,10 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "TimeManagerData", menuName = "Data/TimeManagerData", order = 1)]
 public class TimeManagerData : ScriptableObject
 {
-    public UDateTime CurrentTime;
-    public List<Tuple<DateTime, Action>> TimedTasks = new List<Tuple<DateTime, Action>>();
+    public pp.DateTime CurrentTime;
+    public List<Tuple<pp.DateTime, Action>> TimedTasks = new List<Tuple<pp.DateTime, Action>>();
 }

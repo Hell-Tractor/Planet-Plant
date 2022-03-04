@@ -16,6 +16,8 @@ public class Inventory : MonoBehaviour, Utils.ISaveLoad
 
     [HideInInspector]
     public Item _itemFollowMouse = null;
+    [HideInInspector]
+    public bool AutoSaveLoad { get; set; } = true;
     
     protected Slot[] _slots;
 

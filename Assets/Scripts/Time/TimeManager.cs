@@ -6,33 +6,38 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour, Utils.ISaveLoad
 {
     [SerializeField, Tooltip("起始时间，若加载时间则会被覆盖")]
-    public UDateTime StartTime;
+    public pp.DateTime StartTime;
     [ReadOnly, Tooltip("当前时间")]
     public string CurrentTime;
     public TimeManagerData TimeManagerData;
     [Tooltip("游戏时间与现实时间的倍率")]
     public int TimeRate = 60;
+    [Tooltip("每日小时数"), Range(1, 999)]
+    public int HourPerDay = 24;
     [Header("游戏显示时间缩放比例")]
     [Range(0, 10)]
     public float HourScale = 1f;
+    [HideInInspector]
+    public bool AutoSaveLoad { get; set; } = true;
     private bool _isPaused = false;
-    private DateTime _currentTime;
-    private List<Tuple<DateTime, Action>> _timedTasks = new List<Tuple<DateTime, Action>>();
+    private pp.DateTime _currentTime;
+    private List<Tuple<pp.DateTime, Action>> _timedTasks = new List<Tuple<pp.DateTime, Action>>();
     public event Action OnDayChange;
     
     private void Start() {
-        _currentTime = StartTime.dateTime;
-        CurrentTime = String.Format("{0}/{1}/{2} {3}:{4}:{5}", _currentTime.Year, _currentTime.Month, _currentTime.Day, _currentTime.Hour * HourScale, _currentTime.Minute, _currentTime.Second);
+        _currentTime = StartTime;
+        _currentTime.HourPerDay = HourPerDay;
+        CurrentTime = _currentTime.ToString();
     }
 
     private void Update() {
         if (!_isPaused) {
             int lastDay = _currentTime.Day;
-            _currentTime = _currentTime.AddSeconds(Time.deltaTime * TimeRate);
+            _currentTime.AddSeconds(Time.deltaTime * TimeRate);
             if (lastDay != _currentTime.Day) {
                 OnDayChange?.Invoke();
             }
-            CurrentTime = String.Format("{0}/{1}/{2} {3}:{4}:{5}", _currentTime.Year, _currentTime.Month, _currentTime.Day, _currentTime.Hour * HourScale, _currentTime.Minute, _currentTime.Second);
+            CurrentTime = _currentTime.ToString();
             
             // 执行定时任务
             for (int i = 0; i < _timedTasks.Count; ++i) {
@@ -47,11 +52,11 @@ public class TimeManager : MonoBehaviour, Utils.ISaveLoad
     /// 添加定时任务
     /// </summary>
     /// <param name="execTime">任务执行时间</param>
-    public void AddTimedTask(DateTime execTime, Action task) {
+    public void AddTimedTask(pp.DateTime execTime, Action task) {
         if (execTime <= _currentTime) {
             task();
         } else {
-            _timedTasks.Add(new Tuple<DateTime, Action>(execTime, task));
+            _timedTasks.Add(new Tuple<pp.DateTime, Action>(execTime, task));
         }
     }
     /// <summary>
