@@ -1,5 +1,9 @@
 ﻿namespace Utils
 {
+    /// <summary>
+    /// 单例模式基类，继承该类即可实现子类单例
+    /// </summary>
+    /// <typeparam name="T">子类类型</typeparam>
     public class Singleton<T> where T : Singleton<T>, new()
     {
         protected static T _instance = null;
