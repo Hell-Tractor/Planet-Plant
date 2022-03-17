@@ -17,9 +17,6 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     public int TimeRate = 60;
     [Tooltip("每日小时数"), Range(1, 999)]
     public int HourPerDay = 24;
-    [Header("游戏显示时间缩放比例")]
-    [Range(0, 10)]
-    public float HourScale = 1f;
     private bool _isPaused = false;
     private pp.DateTime _currentTime;
     private List<Tuple<pp.DateTime, Action>> _timedTasks = new List<Tuple<pp.DateTime, Action>>();
