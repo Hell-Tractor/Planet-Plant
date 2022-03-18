@@ -8,8 +8,8 @@ public class DialogData {
     public int ID;
     public int PartID;
     public int SpeakerID;
+    public string Emotion;
     public string Content;
-    public AudioClip Audio;
 }
 
 [CreateAssetMenu(fileName = "DialogData", menuName = "Data/DialogData", order = 3)]

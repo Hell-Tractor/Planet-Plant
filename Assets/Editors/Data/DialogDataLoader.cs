@@ -36,7 +36,7 @@ public class DialogDataLoader : MonoBehaviour {
                 break;
             Data.SelectionData temp = new Data.SelectionData() {
                 ID = int.Parse(selectionTable.Rows[i]["id"].ToString()),
-                DialogID = int.Parse(selectionTable.Rows[i]["dialogid"].ToString()),
+                DialogID = int.Parse(selectionTable.Rows[i]["dialogid"].ToString())
             };
             var selections = selectionTable.Rows[i]["selection"].ToString().Split(';');
             foreach (var j in selections)
@@ -54,12 +54,9 @@ public class DialogDataLoader : MonoBehaviour {
                 ID = int.Parse(dialogTable.Rows[i]["id"].ToString()),
                 PartID = int.Parse(dialogTable.Rows[i]["partid"].ToString()),
                 SpeakerID = int.Parse(dialogTable.Rows[i]["speaker"].ToString()),
-                Content = dialogTable.Rows[i]["content"].ToString(),
+                Emotion = dialogTable.Rows[i]["emotion"].ToString(),
+                Content = dialogTable.Rows[i]["content"].ToString()
             };
-            string audioPath = dialogTable.Rows[i]["audio"].ToString();
-            if (audioPath != "") {
-                temp.Audio = AssetDatabase.LoadAssetAtPath<AudioClip>(audioPath);
-            }
             dialogDataSet.dialogs.Add(temp);
         }
     }
@@ -72,7 +69,7 @@ public class DialogDataLoader : MonoBehaviour {
                 break;
             Data.CharacterData temp = new Data.CharacterData() {
                 ID = int.Parse(characterTable.Rows[i]["id"].ToString()),
-                Name = characterTable.Rows[i]["name"].ToString(),
+                Name = characterTable.Rows[i]["name"].ToString()
             };
             string imgPath = characterTable.Rows[i]["drawing"].ToString();
             if (imgPath != "") {

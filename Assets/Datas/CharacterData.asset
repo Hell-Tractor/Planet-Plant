@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce0e8e4239c2b6438421bd63cf2feb0, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  Characters: []
+  Characters:
+  - ID: 1
+    Name: "\u7236\u4EB2"
+    Image: {fileID: 0}
+  - ID: 2
+    Name: "\u6BCD\u4EB2"
+    Image: {fileID: 0}
+  - ID: 3
+    Name: "\u6211"
+    Image: {fileID: 0}
+  - ID: 4
+    Name: "\u59B9\u59B9"
+    Image: {fileID: 0}
+  - ID: 5
+    Name: "\u5973\u751F"
+    Image: {fileID: 0}

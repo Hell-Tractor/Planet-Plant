@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e6513ee5b9bcb439e63dd68d544efe, type: 3}
   m_Name: DialogData
   m_EditorClassIdentifier: 
-  dialogs: []
+  dialogs:
+  - ID: 1
+    PartID: 1
+    SpeakerID: 1
+    Content: "\u8FD9\u662F\u4E00\u884C\u6D4B\u8BD5\u6587\u672C"
+    Audio: {fileID: 0}

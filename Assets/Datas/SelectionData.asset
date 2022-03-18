@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b300b6c3380d747af89a23c39c985a, type: 3}
   m_Name: SelectionData
   m_EditorClassIdentifier: 
+  selections: []
