@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +10,12 @@ public class DialogUIController : MonoBehaviour {
     public Transform SpeakerTransform;
     public Transform ContentTransform;
 
+    public GameObject NormalDialog;
+    public Image FullScreenDialog;
+
+    public bool PreventKeyEventProcessing { get; private set; } = false;
     private Canvas[] _otherCanvas;
+    private bool _activeFullScreen = false;
 
     private void Awake() {
         _otherCanvas = FindObjectsOfType<Canvas>();
@@ -36,12 +43,90 @@ public class DialogUIController : MonoBehaviour {
             ContentImage.rectTransform.position.y,
             ContentImage.rectTransform.position.z
         );
+        FullScreenDialog.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+        Transform fullScreenTextTransform = FullScreenDialog.transform.GetChild(0);
+        fullScreenTextTransform.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
+    }
+
+    public async void SwapDialog(bool gradually) {
+        if (_activeFullScreen) {
+            _activeFullScreen = false;
+            PreventKeyEventProcessing = true;
+            var bgTask =  _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? 2.0f : 0f, 1f, 0f);
+            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? 2.0f : 0f, 1f, 0f);
+            await Task.WhenAll(bgTask, textTask);
+            PreventKeyEventProcessing = false;
+            FullScreenDialog.gameObject.SetActive(false);
+            NormalDialog.gameObject.SetActive(true);
+        } else {
+            _activeFullScreen = true;
+            NormalDialog.SetActive(false);
+            FullScreenDialog.gameObject.SetActive(true);
+            PreventKeyEventProcessing = true;
+            var bgTask = _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? 1.0f : 0f, 0f, 1f);
+            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? 1.0f : 0f, 0f, 1f);
+            await Task.WhenAll(bgTask, textTask);
+            PreventKeyEventProcessing = false;
+        }
+    }
+
+    private static async Task _tweenImageAlpha(GameObject obj, float time, float from, float to){
+        var img = obj.GetComponent<Image>();
+        float elapsedTime = 0;
+        float start = from;
+        while (elapsedTime < time) {
+            img.color = new Color(
+                img.color.r,
+                img.color.g,
+                img.color.b,
+                Mathf.Lerp(start, to, elapsedTime / time)
+            );
+            elapsedTime += 0.05f;
+            await Task.Delay(TimeSpan.FromSeconds(0.05f));
+        }
+        img.color = new Color(
+            img.color.r,
+            img.color.g,
+            img.color.b,
+            to
+        );
+    }
+
+    private async Task _tweenTextAlpha(GameObject obj, float time, float from, float to) {
+        var text = obj.GetComponent<Text>();
+        float elapsedTime = 0;
+        float start = from;
+        while (elapsedTime < time) {
+            text.color = new Color(
+                text.color.r,
+                text.color.g,
+                text.color.b,
+                Mathf.Lerp(start, to, elapsedTime / time)
+            );
+            elapsedTime += 0.05f;
+            await Task.Delay(TimeSpan.FromSeconds(0.05f));
+        }
+        text.color = new Color(
+            text.color.r,
+            text.color.g,
+            text.color.b,
+            to
+        );
     }
 
     public void SetDialog(string speakerName, string content, Sprite drawing) {
-        SpeakerTransform.GetComponent<Text>().text = speakerName;
-        ContentTransform.GetComponent<Text>().text = content;
-        DrawingImage.sprite = drawing;
+        if (speakerName == "旁白") {
+            if (!FullScreenDialog.gameObject.activeSelf)
+                this.SwapDialog(true);
+            Text text = FullScreenDialog.GetComponentInChildren<Text>();
+            text.text = content;
+        } else {
+            if (!NormalDialog.activeSelf)
+                this.SwapDialog(true);
+            SpeakerTransform.GetComponent<Text>().text = speakerName;
+            ContentTransform.GetComponent<Text>().text = content;
+            DrawingImage.sprite = drawing;
+        }
     }
 
     public void Hide() {

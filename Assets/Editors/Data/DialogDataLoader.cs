@@ -57,6 +57,7 @@ public class DialogDataLoader : MonoBehaviour {
                 Emotion = dialogTable.Rows[i]["emotion"].ToString(),
                 Content = dialogTable.Rows[i]["content"].ToString()
             };
+            temp.Content = temp.Content.Replace("\\n", "\n");
             dialogDataSet.Dialogs.Add(temp);
         }
     }

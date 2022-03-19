@@ -57,14 +57,17 @@ public class DialogManager : MonoBehaviour {
     public Canvas DialogCanvas;
     private DialogUIController _dialogUIController = null;
     private DialogAdapter _dialogAdapter = null;
-
+    
     private void Start() {
-        this.ShowDialog(4);
+        this.ShowDialog(1);
     }
 
     private void Update() {
         if (Input.GetMouseButtonDown(0)) {
             if (_dialogAdapter != null) {
+                if (_dialogUIController?.PreventKeyEventProcessing == true) {
+                    return;
+                }
                 if (_dialogAdapter.HasNext()) {
                     var dialog = _dialogAdapter.GetNext();
                     _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);

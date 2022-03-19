@@ -12,9 +12,124 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e6513ee5b9bcb439e63dd68d544efe, type: 3}
   m_Name: DialogData
   m_EditorClassIdentifier: 
-  dialogs:
+  Dialogs:
   - ID: 1
     PartID: 1
+    SpeakerID: 0
+    Emotion: normal
+    Content: "1990\u5E74\u6625\uFF0C\u5357\u6C9F\u6751\u3002<br />\"\u5FD7\u5F3A\uFF0C\u5FD7\u5F3A\u2026\u2026\""
+  - ID: 2
+    PartID: 1
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u8BF6\uFF0C\u548B\u4E86\u5A18\u3002"
+  - ID: 3
+    PartID: 1
+    SpeakerID: 2
+    Emotion: normal
+    Content: "\u8DDF\u5A18\u53BB\u628A\u6C34\u7A3B\u63D2\u4E0A\uFF0C\u732A\u7ED9\u5582\u54AF\u3002"
+  - ID: 4
+    PartID: 1
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u597D\u561E\u3002"
+  - ID: 5
+    PartID: 2
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u5A18\uFF0C\u4ECA\u5929\u6211\u60F3\u5230\u5904\u8F6C\u8F6C\u3002"
+  - ID: 6
+    PartID: 2
+    SpeakerID: 2
+    Emotion: normal
+    Content: "\u53BB\u5427\uFF0C\u4E0D\u8FC7\u665A\u4E0A\u4E94\u70B9\u8BB0\u5F97\u56DE\u5BB6\u5403\u996D\u3002"
+  - ID: 7
+    PartID: 3
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u4ECA\u5929\u60F3\u5728\u5916\u9762\u8F6C\u8F6C\uFF0C\u6682\u65F6\u8FD8\u4E0D\u60F3\u56DE\u53BB\u3002"
+  - ID: 8
+    PartID: 4
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u7239\u8FD9\u662F\u548B\u4E86\uFF1F\uFF01"
+  - ID: 9
+    PartID: 4
     SpeakerID: 1
-    Content: "\u8FD9\u662F\u4E00\u884C\u6D4B\u8BD5\u6587\u672C"
-    Audio: {fileID: 0}
+    Emotion: normal
+    Content: "\u5509\u2026\u2026\u4ECA\u5929\u642C\u7816\u5934\u7684\u65F6\u5019\uFF0C\u4E00\u4E2A\u6CA1\u7559\u795E\uFF0C\u7838\u7740\u80F3\u818A\u4E86\u3002\u4E0D\u8FC7\u6CA1\u4E8B\uFF0C\u5C31\u8E6D\u7834\u70B9\u76AE\u3002"
+  - ID: 10
+    PartID: 4
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u54E6\u8FD9\u6837\u554A\uFF0C\u90A3\u8FD8\u597D\u3002"
+  - ID: 11
+    PartID: 4
+    SpeakerID: 1
+    Emotion: normal
+    Content: "\u6765\u6765\u6765\uFF0C\u6765\u5403\u996D\u4E86\u3002\u4ECA\u5929\u6709\u597D\u559D\u7684\u8611\u83C7\u6C64\u3002"
+  - ID: 12
+    PartID: 4
+    SpeakerID: 4
+    Emotion: normal
+    Content: "\u8611\u83C7\u6C64~\uFF01\uFF08\u4F38\u52FA\u5B50\u8200\u6C64\uFF09"
+  - ID: 13
+    PartID: 4
+    SpeakerID: 2
+    Emotion: normal
+    Content: "\u54CE\uFF0C\u5E72\u561B\u5462\u3002\u4F60\u54E5\u90FD\u8FD8\u6CA1\u5750\u4E0B\u3002"
+  - ID: 14
+    PartID: 4
+    SpeakerID: 4
+    Emotion: normal
+    Content: "\u2026\u2026"
+  - ID: 15
+    PartID: 4
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u6CA1\u4E8B\u513F\u5988\uFF0C\u59B9\u60F3\u559D\u6C64\u5C31\u559D\u5457\u3002\uFF08\u8D70\u8FC7\u6765\u5750\u4E0B\uFF0C\u7ED9\u6625\u82D7\u8200\u6C64\uFF09"
+  - ID: 16
+    PartID: 4
+    SpeakerID: 4
+    Emotion: normal
+    Content: "\u8C22\u8C22\u54E5\uFF01"
+  - ID: 17
+    PartID: 5
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\uFF08\u4F30\u8BA1\u665A\u4E0A\u6C64\u559D\u591A\u4E86\uFF0C\u6709\u70B9\u60F3\u4E0A\u5395\u6240\u2026\u2026\uFF09"
+  - ID: 18
+    PartID: 5
+    SpeakerID: 1
+    Emotion: normal
+    Content: "\u54CE\uFF0C\u79C0\u7EA2\uFF0C\u4F60\u8BF4\u6211\u8FD9\u5DE5\u4F5C\u6CA1\u4E86\uFF0C\u5FD7\u5F3A\u7684\u5B66\u8D39\u548B\u529E\u554A\u2026\u2026"
+  - ID: 19
+    PartID: 5
+    SpeakerID: 2
+    Emotion: normal
+    Content: "\u8981\u6211\u770B\uFF0C\u5C31\u522B\u8BA9\u4ED6\u4E0A\u5B66\u4E86\u5427\u3002\u6211\u89C9\u5F97\u8BFB\u4E66\u4E5F\u6CA1\u5565\u7528\u554A\uFF0C\u8FD8\u4E0D\u5982\u5728\u5BB6\u91CC\u591A\u5E72\u70B9\u6D3B\u3002"
+  - ID: 20
+    PartID: 5
+    SpeakerID: 1
+    Emotion: normal
+    Content: "\u8FD9\u662F\u4EC0\u4E48\u8BDD\uFF0C\u8BFB\u4E86\u4E66\uFF0C\u6709\u4E86\u77E5\u8BC6\uFF0C\u5C06\u6765\u624D\u80FD\u51FA\u606F\u554A\uFF01"
+  - ID: 21
+    PartID: 5
+    SpeakerID: 2
+    Emotion: normal
+    Content: "\u53EF\u4F60\u770B\u73B0\u5728\uFF0C\u54B1\u5BB6\u54EA\u8FD8\u51FA\u5F97\u8D77\u5B66\u8D39\u554A\u3002\u4F60\u624B\u6298\u4E86\uFF0C\u770B\u533B\u751F\u4E0D\u4E5F\u5F97\u82B1\u94B1\u5417\uFF1F"
+  - ID: 22
+    PartID: 5
+    SpeakerID: 1
+    Emotion: normal
+    Content: "\u54CE\uFF0C\u8BF4\u7684\u4E5F\u662F\u554A\u3002\u53EF\uFF0C\u53EF\u6211\u600E\u4E48\u8DDF\u4ED6\u8BF4\u5462\u3002\u5FD7\u5F3A\u90A3\u5B69\u5B50\uFF0C\u90A3\u4E48\u559C\u6B22\u8BFB\u4E66\uFF0C\u6211\u4E5F\u4E00\u76F4\u7B54\u5E94\u4ED6\uFF0C\u4F1A\u4F9B\u4ED6\u4E0A\u5B66\u2026\u2026"
+  - ID: 23
+    PartID: 5
+    SpeakerID: 2
+    Emotion: normal
+    Content: "\u6211\u6765\u8DDF\u4ED6\u8BF4\u5C31\u662F\u4E86\u3002\u5FD7\u5F3A\u5B5D\u987A\uFF0C\u80FD\u7406\u89E3\u4F60\u7684\u3002\u884C\u4E86\uFF0C\u7761\u5427\u3002"
+  - ID: 24
+    PartID: 5
+    SpeakerID: 3
+    Emotion: normal
+    Content: "\u2026\u2026"
