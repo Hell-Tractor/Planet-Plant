@@ -23,7 +23,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2277796859157078143}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31,7 +31,7 @@ RectTransform:
   - {fileID: 4710791492046709690}
   - {fileID: 4710791492493505052}
   m_Father: {fileID: 4710791491751346171}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -70,7 +70,7 @@ RectTransform:
   m_Children:
   - {fileID: 338811534640623153}
   m_Father: {fileID: 4710791491751346171}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -147,8 +147,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1197226579831841705}
   - {fileID: 7980178243437991863}
+  - {fileID: 1197226579831841705}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -230,13 +230,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de7823b0066b7a40808dbf7e7e39948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogManager: {fileID: 0}
   DrawingImage: {fileID: 4710791492046709691}
   ContentImage: {fileID: 4710791492493505053}
   SpeakerTransform: {fileID: 4710791492206395502}
   ContentTransform: {fileID: 4710791491884922941}
   NormalDialog: {fileID: 2277796859157078143}
   FullScreenDialog: {fileID: 8999633487190327165}
+  FullScreenShowDuration: 1
+  FullScreenHideDuration: 2
 --- !u!1 &4710791491884922940
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -772, y: -253}
+  m_AnchoredPosition: {x: -772, y: -293}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4710791492046709688
@@ -510,7 +511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -472, y: -253}
+  m_AnchoredPosition: {x: -472, y: -293}
   m_SizeDelta: {x: 1344, y: 250}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4710791492493505050

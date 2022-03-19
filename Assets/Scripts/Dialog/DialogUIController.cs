@@ -13,6 +13,8 @@ public class DialogUIController : MonoBehaviour {
     public GameObject NormalDialog;
     public Image FullScreenDialog;
 
+    public float FullScreenShowDuration = 1f;
+    public float FullScreenHideDuration = 2f;
     public bool PreventKeyEventProcessing { get; private set; } = false;
     private Canvas[] _otherCanvas;
     private bool _activeFullScreen = false;
@@ -52,8 +54,8 @@ public class DialogUIController : MonoBehaviour {
         if (_activeFullScreen) {
             _activeFullScreen = false;
             PreventKeyEventProcessing = true;
-            var bgTask =  _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? 2.0f : 0f, 1f, 0f);
-            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? 2.0f : 0f, 1f, 0f);
+            var bgTask =  _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? FullScreenHideDuration : 0f, 1f, 0f);
+            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? FullScreenHideDuration : 0f, 1f, 0f);
             await Task.WhenAll(bgTask, textTask);
             PreventKeyEventProcessing = false;
             FullScreenDialog.gameObject.SetActive(false);
@@ -63,8 +65,8 @@ public class DialogUIController : MonoBehaviour {
             NormalDialog.SetActive(false);
             FullScreenDialog.gameObject.SetActive(true);
             PreventKeyEventProcessing = true;
-            var bgTask = _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? 1.0f : 0f, 0f, 1f);
-            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? 1.0f : 0f, 0f, 1f);
+            var bgTask = _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? FullScreenShowDuration : 0f, 0f, 1f);
+            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? FullScreenShowDuration : 0f, 0f, 1f);
             await Task.WhenAll(bgTask, textTask);
             PreventKeyEventProcessing = false;
         }
@@ -92,7 +94,7 @@ public class DialogUIController : MonoBehaviour {
         );
     }
 
-    private async Task _tweenTextAlpha(GameObject obj, float time, float from, float to) {
+    private static async Task _tweenTextAlpha(GameObject obj, float time, float from, float to) {
         var text = obj.GetComponent<Text>();
         float elapsedTime = 0;
         float start = from;
@@ -121,8 +123,16 @@ public class DialogUIController : MonoBehaviour {
             Text text = FullScreenDialog.GetComponentInChildren<Text>();
             text.text = content;
         } else {
-            if (!NormalDialog.activeSelf)
+            if (speakerName != "unknown" && FullScreenDialog.gameObject.activeSelf)
                 this.SwapDialog(true);
+            if (speakerName == "unknown") {
+                NormalDialog.SetActive(true);
+                SpeakerTransform.gameObject.SetActive(false);
+                DrawingImage.gameObject.SetActive(false);
+            } else {
+                SpeakerTransform.gameObject.SetActive(true);
+                DrawingImage.gameObject.SetActive(true);
+            }
             SpeakerTransform.GetComponent<Text>().text = speakerName;
             ContentTransform.GetComponent<Text>().text = content;
             DrawingImage.sprite = drawing;
