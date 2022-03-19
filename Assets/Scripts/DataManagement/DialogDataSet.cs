@@ -14,7 +14,7 @@ public class DialogData {
 
 [CreateAssetMenu(fileName = "DialogData", menuName = "Data/DialogData", order = 3)]
 public class DialogDataSet : ScriptableObject {
-    public List<DialogData> dialogs = new List<DialogData>();
+    public List<DialogData> Dialogs = new List<DialogData>();
 }
 
 }

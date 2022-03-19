@@ -7,7 +7,6 @@ namespace Data {
 public class CharacterData {
     public int ID;
     public string Name;
-    public Sprite Image;
 }
 
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/CharacterData", order = 2)]

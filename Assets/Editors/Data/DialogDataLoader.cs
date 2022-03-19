@@ -46,7 +46,7 @@ public class DialogDataLoader : MonoBehaviour {
 
     private static void _loadDialogData(DataTable dialogTable) {
         Data.DialogDataSet dialogDataSet = AssetDatabase.LoadAssetAtPath<Data.DialogDataSet>(DialogDataSetPath);
-        dialogDataSet.dialogs.Clear();
+        dialogDataSet.Dialogs.Clear();
         for (int i = 1; i < dialogTable.Rows.Count; ++i) {
             if (dialogTable.Rows[i]["id"].ToString() == "")
                 break;
@@ -57,7 +57,7 @@ public class DialogDataLoader : MonoBehaviour {
                 Emotion = dialogTable.Rows[i]["emotion"].ToString(),
                 Content = dialogTable.Rows[i]["content"].ToString()
             };
-            dialogDataSet.dialogs.Add(temp);
+            dialogDataSet.Dialogs.Add(temp);
         }
     }
 
@@ -71,10 +71,6 @@ public class DialogDataLoader : MonoBehaviour {
                 ID = int.Parse(characterTable.Rows[i]["id"].ToString()),
                 Name = characterTable.Rows[i]["name"].ToString()
             };
-            string imgPath = characterTable.Rows[i]["drawing"].ToString();
-            if (imgPath != "") {
-                temp.Image = AssetDatabase.LoadAssetAtPath<Sprite>(imgPath);
-            }
             characterDataSet.Characters.Add(temp);
         }
     }

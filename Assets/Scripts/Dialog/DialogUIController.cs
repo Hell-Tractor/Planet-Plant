@@ -13,8 +13,9 @@ public class DialogUIController : MonoBehaviour {
     private void Awake() {
         _otherCanvas = FindObjectsOfType<Canvas>();
         foreach (Canvas i in _otherCanvas)
-            if (i.name != "DialogCanvas")
-                i.enabled = false;
+            if (!i.CompareTag("DialogCanvas"))
+                i.gameObject.SetActive(false);
+        this.OnGUI();
     }
     
     private void OnGUI() {
@@ -45,7 +46,7 @@ public class DialogUIController : MonoBehaviour {
 
     public void Hide() {
         foreach (Canvas i in _otherCanvas)
-            i.enabled = true;
+            i.gameObject.SetActive(true);
         Destroy(gameObject);
     }
 }
