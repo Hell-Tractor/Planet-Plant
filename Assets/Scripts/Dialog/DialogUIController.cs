@@ -1,5 +1,5 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteAlways]
 public class DialogUIController : MonoBehaviour {
@@ -39,8 +39,8 @@ public class DialogUIController : MonoBehaviour {
     }
 
     public void SetDialog(string speakerName, string content, Sprite drawing) {
-        SpeakerTransform.GetComponent<TextMeshProUGUI>().text = speakerName;
-        ContentTransform.GetComponent<TextMeshProUGUI>().text = content;
+        SpeakerTransform.GetComponent<Text>().text = speakerName;
+        ContentTransform.GetComponent<Text>().text = content;
         DrawingImage.sprite = drawing;
     }
 
