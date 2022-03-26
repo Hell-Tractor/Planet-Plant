@@ -59,7 +59,6 @@ public class DialogManager : MonoBehaviour {
     private DialogAdapter _dialogAdapter = null;
     
     private void Start() {
-        this.ShowDialog(1);
     }
 
     private void Update() {

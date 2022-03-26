@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,7 +20,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
     public InventoryData InventoryData;
 
     [HideInInspector]
-    public Item _itemFollowMouse = null;
+    public static Item _itemFollowMouse = null;
     
     protected Slot[] _slots;
 
@@ -54,6 +55,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
             EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) {
                 position = Input.mousePosition
             }, hits);
+            Debug.Log(hits.Count);
             foreach (var i in hits) {
                 if (i.gameObject.CompareTag("InventorySlot")) {
                     _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
@@ -63,6 +65,25 @@ public class Inventory : MonoBehaviour, ISaveLoad
         }
     }
     
+    public bool AddItem(Item item) {
+        Slot slot = this._findEmptySlot();
+        if (slot != null) {
+            slot.StoreItem(item);
+            return true;
+        }
+        return false;
+    }
+
+    private Slot _findEmptySlot() {
+        foreach (var slot in _slots) {
+            Slot temp = slot.GetComponent<Slot>();
+            if (temp.IsEmpty()) {
+                return temp;
+            }
+        }
+        return null;
+    }
+
     #region ISaveLoad
     public void Save() {
         var data = this.GetDataContainer() as InventoryData;

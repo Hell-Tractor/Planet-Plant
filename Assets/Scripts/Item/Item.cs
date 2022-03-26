@@ -1,5 +1,14 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+public enum ItemType {
+    None,
+    Consumable,
+    Weapon,
+    Seed,
+    Tool,
+    Material
+}
 
 /// <summary>
 /// 物品类，id相同的物品视为同一物品
@@ -35,16 +44,8 @@ public class Item : MonoBehaviour {
     /// 更新数量显示
     /// </summary>
     public void UpdateCount() {
-        var textComponent = this.GetComponentInChildren<TextMeshProUGUI>();
+        var textComponent = this.GetComponentInChildren<Text>();
         if (textComponent)
             textComponent.text = Count.ToString();
-    }
-
-    public enum ItemType {
-        Consumable,
-        Weapon,
-        Seed,
-        Tool,
-        Material
     }
 }

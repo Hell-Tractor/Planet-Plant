@@ -11,12 +11,20 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     [SerializeField, Tooltip("起始时间，若加载时间则会被覆盖")]
     public pp.DateTime StartTime;
     [ReadOnly, Tooltip("当前时间")]
-    public string CurrentTime;
+    public string CurrentTimeString;
     public TimeManagerData TimeManagerData;
     [Tooltip("游戏时间与现实时间的倍率")]
     public int TimeRate = 60;
     [Tooltip("每日小时数"), Range(1, 999)]
     public int HourPerDay = 24;
+    [Tooltip("每季节天数"), Range(1, 99)]
+    public int DayPerSeason = 5;
+    public static TimeManager Instance;
+    public pp.DateTime CurrentTime {
+        get {
+            return _currentTime;
+        }
+    }
     private bool _isPaused = false;
     private pp.DateTime _currentTime;
     private List<Tuple<pp.DateTime, Action>> _timedTasks = new List<Tuple<pp.DateTime, Action>>();
@@ -24,11 +32,15 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     /// 当日期更新时触发
     /// </summary>
     public event Action OnDayChange;
+    public event Action OnSeasonChange;
     
     private void Start() {
+        Instance = this;
+        
         _currentTime = StartTime;
         _currentTime.HourPerDay = HourPerDay;
-        CurrentTime = _currentTime.ToString();
+        _currentTime.DayPerSeason = DayPerSeason;
+        CurrentTimeString = _currentTime.ToString();
         // 启用自动保存/加载
         this.EnableAutoSaveLoad();
     }
@@ -36,11 +48,15 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     private void Update() {
         if (!_isPaused) {
             int lastDay = _currentTime.Day;
+            int lastSeason = _currentTime.Season;
             _currentTime.AddSeconds(Time.deltaTime * TimeRate);
             if (lastDay != _currentTime.Day) {
                 OnDayChange?.Invoke();
             }
-            CurrentTime = _currentTime.ToString();
+            if (lastSeason != _currentTime.Season) {
+                OnSeasonChange?.Invoke();
+            }
+            CurrentTimeString = _currentTime.ToString();
             
             // 执行定时任务
             for (int i = 0; i < _timedTasks.Count; ++i) {
