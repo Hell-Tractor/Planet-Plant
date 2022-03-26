@@ -37,7 +37,7 @@ class DialogAdapter {
         var dialog = this._dialogs[this._counter];
         result.SpeakerName = this._characters.Find(x => x.ID == dialog.SpeakerID).Name;
         result.Content = dialog.Content;
-        string imgPath = "Drawings/" + result.SpeakerName + "/" + dialog.Emotion + ".png";
+        string imgPath = "Drawings/" + result.SpeakerName + "/" + dialog.Emotion;
         result.SpeakerImage = Resources.Load<Sprite>(imgPath);
         this._counter++;
         return result;
@@ -59,6 +59,7 @@ public class DialogManager : MonoBehaviour {
     private DialogAdapter _dialogAdapter = null;
     
     private void Start() {
+        ShowDialog(1);
     }
 
     private void Update() {

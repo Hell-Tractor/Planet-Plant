@@ -37,12 +37,12 @@ public class DialogUIController : MonoBehaviour {
         }
         DrawingImage.rectTransform.position = new Vector3(
             (Screen.width - ContentImage.rectTransform.sizeDelta.x - DrawingImage.rectTransform.sizeDelta.x) / 2,
-            DrawingImage.rectTransform.position.y,
+            DrawingImage.rectTransform.sizeDelta.y / 2 + 50,
             DrawingImage.rectTransform.position.z
         );
         ContentImage.rectTransform.position = new Vector3(
-            DrawingImage.rectTransform.position.x + DrawingImage.rectTransform.sizeDelta.x,
-            ContentImage.rectTransform.position.y,
+            DrawingImage.rectTransform.position.x + DrawingImage.rectTransform.sizeDelta.x * 0.8f,
+            ContentImage.rectTransform.sizeDelta.y / 2 + 50,
             ContentImage.rectTransform.position.z
         );
         FullScreenDialog.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
