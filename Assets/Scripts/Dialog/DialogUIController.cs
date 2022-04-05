@@ -54,8 +54,8 @@ public class DialogUIController : MonoBehaviour {
         if (_activeFullScreen) {
             _activeFullScreen = false;
             PreventKeyEventProcessing = true;
-            var bgTask =  _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? FullScreenHideDuration : 0f, 1f, 0f);
-            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? FullScreenHideDuration : 0f, 1f, 0f);
+            var bgTask = _tweenAlpha<Image>(FullScreenDialog.gameObject, gradually ? FullScreenHideDuration : 0f, 1f, 0f);
+            var textTask = _tweenAlpha<Text>(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? FullScreenHideDuration : 0f, 1f, 0f);
             await Task.WhenAll(bgTask, textTask);
             PreventKeyEventProcessing = false;
             FullScreenDialog.gameObject.SetActive(false);
@@ -65,55 +65,37 @@ public class DialogUIController : MonoBehaviour {
             NormalDialog.SetActive(false);
             FullScreenDialog.gameObject.SetActive(true);
             PreventKeyEventProcessing = true;
-            var bgTask = _tweenImageAlpha(FullScreenDialog.gameObject, gradually ? FullScreenShowDuration : 0f, 0f, 1f);
-            var textTask = _tweenTextAlpha(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? FullScreenShowDuration : 0f, 0f, 1f);
+            var bgTask = _tweenAlpha<Image>(FullScreenDialog.gameObject, gradually ? FullScreenShowDuration : 0f, 0f, 1f);
+            var textTask = _tweenAlpha<Text>(FullScreenDialog.transform.GetChild(0).gameObject, gradually ? FullScreenShowDuration : 0f, 0f, 1f);
             await Task.WhenAll(bgTask, textTask);
             PreventKeyEventProcessing = false;
         }
     }
 
-    private static async Task _tweenImageAlpha(GameObject obj, float time, float from, float to){
-        var img = obj.GetComponent<Image>();
+    private static async Task _tweenAlpha<T>(GameObject obj, float time, float from, float to) {
+        var img = obj.GetComponent<T>();
         float elapsedTime = 0;
         float start = from;
+        var colorProperty = img.GetType().GetProperty("color");
+        Color? color = colorProperty.GetValue(img) as Color?;
+        if (color == null)
+            return;
         while (elapsedTime < time) {
-            img.color = new Color(
-                img.color.r,
-                img.color.g,
-                img.color.b,
+            colorProperty.SetValue(img, new Color(
+                color!.Value.r,
+                color!.Value.g,
+                color!.Value.b,
                 Mathf.Lerp(start, to, elapsedTime / time)
-            );
+            ));
             elapsedTime += 0.05f;
             await Task.Delay(TimeSpan.FromSeconds(0.05f));
         }
-        img.color = new Color(
-            img.color.r,
-            img.color.g,
-            img.color.b,
+        colorProperty.SetValue(img, new Color(
+            color!.Value.r,
+            color!.Value.g,
+            color!.Value.b,
             to
-        );
-    }
-
-    private static async Task _tweenTextAlpha(GameObject obj, float time, float from, float to) {
-        var text = obj.GetComponent<Text>();
-        float elapsedTime = 0;
-        float start = from;
-        while (elapsedTime < time) {
-            text.color = new Color(
-                text.color.r,
-                text.color.g,
-                text.color.b,
-                Mathf.Lerp(start, to, elapsedTime / time)
-            );
-            elapsedTime += 0.05f;
-            await Task.Delay(TimeSpan.FromSeconds(0.05f));
-        }
-        text.color = new Color(
-            text.color.r,
-            text.color.g,
-            text.color.b,
-            to
-        );
+        ));
     }
 
     public void SetDialog(string speakerName, string content, Sprite drawing) {
