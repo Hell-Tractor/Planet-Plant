@@ -10,6 +10,7 @@ public class SelectionManager : MonoBehaviour {
 
     private GameObject[] _selection;
     private float _screenWidth = Screen.width;
+    private ISelectionHandler _handler = null;
 
     private void OnEnable() {
         _selection = new GameObject[SelectionCount];
@@ -51,7 +52,13 @@ public class SelectionManager : MonoBehaviour {
             _selection[i].GetComponentInChildren<Text>().text = text[i];
         }
     }
-    
-    // todo 创建selectionHandler类，使用setSelectionHandler方法与本类绑定，在按钮被点击时调用seletionHandler内方法
-    // todo 使用时只需继承selectionHandler并实例化后作为参数传递即可
+
+    public void SetHandler(ISelectionHandler handler) {
+        _handler = handler;
+    }
+
+    public void Handle(int index) {
+        if (_handler != null)
+            _handler.HandleSelection(index, DialogManager.Instance);
+    }
 }
