@@ -48,6 +48,7 @@ public abstract class FSMState {
         }
     }
     public virtual void OnStateStay(FSMBase fsm) {}
+    public virtual void OnStateFixedStay(FSMBase fsm) {}
     public virtual void OnStateExit(FSMBase fsm) {
         if (fsm.animator != null) {
             fsm.animator.ResetTrigger(StateID.ToString() + "Trigger");

@@ -35,6 +35,9 @@ public class FSMBase : MonoBehaviour {
         _currentState.Reason(this);
         _currentState.OnStateStay(this);
     }
+    public void FixedUpdate() {
+        _currentState.OnStateFixedStay(this);
+    }
     /// <summary>
     /// 切换当前状态至目标状态
     /// </summary>

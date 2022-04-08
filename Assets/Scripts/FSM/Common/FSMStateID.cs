@@ -5,6 +5,9 @@ namespace AI.FSM {
     /// </summary>
     public enum FSMStateID {
         Default,
+        Idle,
+        HorizontalMoving,
+        Jumping
     }
 
 }
