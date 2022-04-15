@@ -7,7 +7,8 @@ namespace AI.FSM {
         Default,
         Idle,
         HorizontalMoving,
-        Jumping
+        Jumping,
+        Moving
     }
 
 }

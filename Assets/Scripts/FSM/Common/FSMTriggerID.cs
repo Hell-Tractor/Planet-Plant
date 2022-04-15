@@ -7,7 +7,8 @@ namespace AI.FSM {
         HorizontalMoveStart,
         MoveEnd,
         JumpStart,
-        Grounded
+        Grounded,
+        MoveStart
     }
 
 }
