@@ -1,9 +1,9 @@
 using UnityEngine;
 
 namespace AI.FSM {
-    public class JumpTrigger : FSMTrigger {
+    public class JumpStartTrigger : FSMTrigger {
         protected override void init() {
-            this.TriggerID = FSMTriggerID.Jump;
+            this.TriggerID = FSMTriggerID.JumpStart;
         }
 
         public override bool HandleTrigger(FSMBase fsm) {

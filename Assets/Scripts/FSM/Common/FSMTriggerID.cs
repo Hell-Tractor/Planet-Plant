@@ -4,9 +4,9 @@ namespace AI.FSM {
     /// 有限状态机条件枚举
     /// </summary>
     public enum FSMTriggerID {
-        HorizontalMove,
-        MoveStop,
-        Jump,
+        HorizontalMoveStart,
+        MoveEnd,
+        JumpStart,
         Grounded
     }
 
