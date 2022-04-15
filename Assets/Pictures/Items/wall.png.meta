@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 232
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,12 +107,12 @@ TextureImporter:
       name: wall_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 274
-        width: 320
-        height: 278
+        x: 65
+        y: 290
+        width: 232
+        height: 232
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: wall_1
       rect:
         serializedVersion: 2
-        x: 426
-        y: 273
-        width: 335
-        height: 279
+        x: 474
+        y: 292
+        width: 232
+        height: 232
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +149,12 @@ TextureImporter:
       name: wall_3
       rect:
         serializedVersion: 2
-        x: 826
-        y: 266
-        width: 330
-        height: 276
+        x: 876
+        y: 290
+        width: 232
+        height: 232
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
