@@ -1,19 +1,25 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour {
-    [Range(1, 4)]
-    public int SelectionCount = 3;
     public GameObject SelectionPrefab;
 
     public float ButtonHeight = 100;
 
+    public static SelectionManager Instance;
     private GameObject[] _selection;
     private float _screenWidth = Screen.width;
     private ISelectionHandler _handler = null;
+    private int _selectionCount;
+
+    private void Awake() {
+        Instance = this;
+    }
 
     private void OnEnable() {
-        _selection = new GameObject[SelectionCount];
+        _selection = new GameObject[_selectionCount];
 
         float top = Screen.height * 0.3f;
         float bottom = -Screen.height * 0.2f;
@@ -22,10 +28,10 @@ public class SelectionManager : MonoBehaviour {
         float width = _screenWidth / 3.0f;
         
         float height = ButtonHeight;
-        float paddingHeight = (sumHeight - ButtonHeight * SelectionCount) / (SelectionCount - 1);
+        float paddingHeight = (sumHeight - ButtonHeight * _selectionCount) / (_selectionCount - 1);
         
 
-        for (int i = 0; i < SelectionCount; i++) {
+        for (int i = 0; i < _selectionCount; i++) {
             _selection[i] = Instantiate(SelectionPrefab, transform);
 
             float y = top - i * height;
@@ -34,9 +40,13 @@ public class SelectionManager : MonoBehaviour {
             RectTransform rectTransform = _selection[i].GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new Vector2(0, y);
             rectTransform.sizeDelta = new Vector2(width, height);
+
+            Button button = _selection[i].GetComponent<Button>();
+            int index = i;
+            button.onClick.AddListener(() => this.Handle(index));
         }
 
-        if (SelectionCount == 1) {
+        if (_selectionCount == 1) {
             _selection[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         }
     }
@@ -47,8 +57,10 @@ public class SelectionManager : MonoBehaviour {
         _selection = null;
     }
 
-    public void SetText(string[] text) {
-        for (int i = 0; i < SelectionCount; i++) {
+    public void ShowSelection(List<string> text) {
+        _selectionCount = text.Count;
+        this.gameObject.SetActive(true);
+        for (int i = 0; i < _selectionCount; i++) {
             _selection[i].GetComponentInChildren<Text>().text = text[i];
         }
     }
@@ -58,7 +70,10 @@ public class SelectionManager : MonoBehaviour {
     }
 
     public void Handle(int index) {
-        if (_handler != null)
+        if (_handler != null) {
             _handler.HandleSelection(index, DialogManager.Instance);
+            _handler = null;
+        }
+        this.gameObject.SetActive(false);
     }
 }

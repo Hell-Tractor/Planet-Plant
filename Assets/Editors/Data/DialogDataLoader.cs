@@ -30,7 +30,7 @@ public class DialogDataLoader : MonoBehaviour {
 
     private static void _loadSelectionData(DataTable selectionTable) {
         Data.SelectionDataSet selectionDataSet = AssetDatabase.LoadAssetAtPath<Data.SelectionDataSet>(SelectionDataSetPath);
-        selectionDataSet.selections.Clear();
+        selectionDataSet.Selections.Clear();
         for (int i = 1; i < selectionTable.Rows.Count; ++i) {
             if (selectionTable.Rows[i]["id"].ToString() == "")
                 break;
@@ -38,9 +38,8 @@ public class DialogDataLoader : MonoBehaviour {
                 ID = int.Parse(selectionTable.Rows[i]["id"].ToString()),
                 DialogID = int.Parse(selectionTable.Rows[i]["dialogid"].ToString())
             };
-            var selections = selectionTable.Rows[i]["selection"].ToString().Split(';');
-            foreach (var j in selections)
-                temp.Options.Add(new System.Tuple<string, System.Action>(j, null));
+            temp.Options = selectionTable.Rows[i]["selection"].ToString().Split(';').ToList();
+            selectionDataSet.Selections.Add(temp);
         }
     }
 

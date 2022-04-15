@@ -8,12 +8,12 @@ namespace Data {
 public class SelectionData {
     public int ID;
     public int DialogID;
-    public List<Tuple<string, Action>> Options = new List<Tuple<string, Action>>();
+    public List<string> Options = new List<string>();
 }
 
 [CreateAssetMenu(fileName = "SelectionData", menuName = "Data/SelectionData", order = 4)]
 public class SelectionDataSet : ScriptableObject {
-    public List<SelectionData> selections = new List<SelectionData>();
+    public List<SelectionData> Selections = new List<SelectionData>();
 }
 
 }

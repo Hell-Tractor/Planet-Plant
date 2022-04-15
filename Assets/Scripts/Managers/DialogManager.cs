@@ -32,7 +32,6 @@ class DialogAdapter {
         if (this._counter >= this._dialogs.Count) {
             return null;
         }
-
         return GetDialog(this._counter++);
     }
 
@@ -40,15 +39,35 @@ class DialogAdapter {
         if (id >= this._dialogs.Count) {
             return null;
         }
-        this._counter = id;
-        
         AdaptedDialog result = new AdaptedDialog();
-        var dialog = this._dialogs[this._counter];
+        var dialog = this._dialogs[id];
         result.SpeakerName = this._characters.Find(x => x.ID == dialog.SpeakerID).Name;
         result.Content = dialog.Content;
         string imgPath = "Drawings/" + result.SpeakerName + "/" + dialog.Emotion;
         result.SpeakerImage = Resources.Load<Sprite>(imgPath);
+        if (result.SpeakerName == "NPC")
+            result.SpeakerName = "???";
         return result;
+    }
+    public Data.DialogData GetRawDialog(int id) {
+        if (id >= this._dialogs.Count) {
+            return null;
+        }
+        return this._dialogs[id];
+    }
+
+    public Data.DialogData GetRawDialog() {
+        if (this._counter < 1 || this._counter > this._dialogs.Count)
+            return null;
+        return this._dialogs[this._counter - 1];
+    }
+
+    public void MoveNext() {
+        this._counter++;
+    }
+
+    public int GetCurrentID() {
+        return this._counter;
     }
 
     public bool HasNext() {
@@ -67,27 +86,43 @@ public class DialogManager : MonoBehaviour {
 
     public Canvas DialogCanvas;
     public static DialogManager Instance;
+    /// <summary>
+    /// 在dialog更新前调用
+    /// </summary>
+    public event Action<Data.DialogData> BeforeDialogChange;
+    private SelectionManager _selectionManager = null;
+    private GameObject _selectionUI = null;
     private DialogUIController _dialogUIController = null;
     private DialogAdapter _dialogAdapter = null;
+
+    public int testDialog = -1;
     
     private void Start() {
         Instance = this;
+
+        if (testDialog != -1)
+            this.ShowDialog(testDialog);
     }
 
     private void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            if (_dialogAdapter != null) {
+            if (_dialogAdapter != null && !_selectionUI.activeSelf) {
                 if (_dialogUIController?.PreventKeyEventProcessing == true) {
                     return;
                 }
-                if (_dialogAdapter.HasNext()) {
-                    var dialog = _dialogAdapter.GetNext();
-                    _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);
-                } else {
-                    _dialogUIController.Hide();
-                    _dialogAdapter = null;
-                    _dialogUIController = null;
+                var rawDialog = _dialogAdapter.GetRawDialog();
+                Data.SelectionData selection = null;
+                if (rawDialog != null) {
+                    selection = this._getSelection(rawDialog.ID);
                 }
+                if (selection != null) {
+                    this._selectionManager.ShowSelection(selection.Options);
+                    Type handlerType = Type.GetType("SelectionHandler" + selection.ID.ToString());
+                    var handler = handlerType == null ? new DefaultSelectionHandler() : Activator.CreateInstance(handlerType) as ISelectionHandler;
+                    this._selectionManager.SetHandler(handler);
+                } else {
+                    this.ShowNext();
+                } 
             }
         }
     }
@@ -97,6 +132,8 @@ public class DialogManager : MonoBehaviour {
         if (_dialogUIController == null) {
             var canvas = Instantiate(DialogCanvas);
             _dialogUIController = canvas.GetComponent<DialogUIController>();
+            _selectionUI = canvas.transform.Find("Selection").gameObject;
+            _selectionManager = _selectionUI?.GetComponent<SelectionManager>();
         }
         var dialog = _dialogAdapter.GetNext();
         _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);
@@ -105,6 +142,21 @@ public class DialogManager : MonoBehaviour {
     public void JumpTo(int id) {
         if (_dialogAdapter != null) {
             _dialogAdapter.SetCounter(id);
+        }
+    }
+
+    private Data.SelectionData _getSelection(int dialogID) {
+        return SelectionDataSet.Selections.Find(x => x.DialogID == dialogID);
+    }
+
+    public void ShowNext() {
+        if (_dialogAdapter.HasNext()) {
+            var dialog = _dialogAdapter.GetNext();
+            _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);
+        } else {
+            _dialogUIController.Hide();
+            _dialogAdapter = null;
+            _dialogUIController = null;
         }
     }
 }
