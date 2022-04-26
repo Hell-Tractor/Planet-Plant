@@ -4,85 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
-
+using BUFF;
 //using pp;
 
-public abstract class BUFFType
-{  
-    public float Value;
-    public abstract IEnumerator ValueChange();
-    public abstract void StartRangeBuff();
-    public abstract void EndRangeBuff();
-    public float GetBuffValue()
-    {
-        return this.Value;
-    }
-}
 
-public class TestBuff : BUFFType
-{
-    public TestBuff()
-    {
-        Value = 0;
-    }
-    public override IEnumerator ValueChange()
-    {
-        Value += 10;
-        Debug.Log(Value);
-        yield return new WaitForSeconds(5);
-        Value -= 10;
-        Debug.Log(Value);
-    }
-    public override void StartRangeBuff()
-    {
-        Value += 10; 
-        Debug.Log(Value);
-    }
-    public override void EndRangeBuff()
-    {
-        Value -= 10; 
-        Debug.Log(Value);
-    }
-}
-
-public class TestBuff2 :BUFFType
-{
-    public TestBuff2()
-    {
-        Value = 50;
-    }
-    public override IEnumerator ValueChange()
-    {
-        Value += 2;
-        Debug.Log(Value);
-        yield return new WaitForSeconds(5);
-        Value -= 2;
-        Debug.Log(Value);
-    }
-
-    public override void StartRangeBuff()
-    {
-        Value += 2; 
-        Debug.Log(Value);
-    }
-    public override void EndRangeBuff()
-    {
-        Value -= 2; 
-        Debug.Log(Value);
-    }
-}
-
-public class Emotion : MonoBehaviour
+public class EmotionManager : MonoBehaviour
 {
     public Slider EmotionSlider;
     public float UpdateRate;
     public float IntervalHour;
     private float _nextHour;
-    public BUFFType BuffType;
     TestBuff _testbuff = new TestBuff();
     TestBuff2 _testbuff2 = new TestBuff2();
-    private List<BUFFType> _bufftypeList = new List<BUFFType>();
-    private List<BUFFType> _debufftypeList = new List<BUFFType>();
+    private List<BuffBase> _buffList = new List<BuffBase>();
+    private List<BuffBase> _deBuffList = new List<BuffBase>();
+    private List<BuffBase> _currentBuffList = new List<BuffBase>();
     public Image Icon;
 
     private List<int> _rangeList = new List<int>();
@@ -90,37 +26,54 @@ public class Emotion : MonoBehaviour
     public int RangeBuffCount;
 
     //是否清除随机获得的buff（情绪低于40%）
-    bool IsBuffClear = false;
+    bool IsSetRandomBuff = false;
 
     public float PassiveEventRate;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        _bufftypeList.Add(_testbuff);
-        _bufftypeList.Add(_testbuff2);
+        _buffList.Add(_testbuff);
+        _buffList.Add(_testbuff2);
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoodSwing();
 
-        if(!IsBuffClear && EmotionSlider.value < 0.41f)
+        if (EmotionSlider.value >= 0.45f && !IsSetRandomBuff)
         {
-            ClearRangeBuff();
+            SetRandomBuff();
+        }
+        if (Mathf.Approximately(EmotionSlider.value, 0.4f))
+        {
+            IsSetRandomBuff = false;
         }
 
-        if(EmotionSlider.value<-0.41f)
+        for (int i = 0; i < _currentBuffList.Count; i++)
         {
+            if (_currentBuffList[i] != null)
+            {
+                _currentBuffList[i].OnBuffStay();
+                if (_currentBuffList[i].IsBuffEnded())
+                {
+                    _currentBuffList[i].OnBuffExit();
+                    _currentBuffList.RemoveAt(i);
+                }
+            }
+        }
 
+        if (Mathf.Approximately(EmotionSlider.value, -0.4f))
+        {
+            //概率触发恶性事件
             System.Random ra = new System.Random(unchecked((int)DateTime.Now.Ticks));
             int temp = ra.Next(1, 100);
             if (temp <= PassiveEventRate)
                 PassiveEvent();
         }
-        else if(EmotionSlider.value<=0.5f)
+        else if (Mathf.Approximately(EmotionSlider.value, -0.5f))
         {
+            //必然发生恶性事件
             PassiveEvent();
         }
     }
@@ -138,7 +91,7 @@ public class Emotion : MonoBehaviour
         //    _nextHour = GetComponent<DateTime>().Hour + IntervalHour;
         //    EmotionSlider.value -= UpdateRate * 0.01f;
         //}
-        if (EmotionSlider.value > 0.41 && Time.time>_nextHour)
+        if (EmotionSlider.value > 0.41 && Time.time > _nextHour)
         {
             _nextHour = Time.time + IntervalHour;
             EmotionSlider.value -= UpdateRate * 0.01f; ;
@@ -153,37 +106,41 @@ public class Emotion : MonoBehaviour
     //事件影响
     public void AffectByEvent(float value)
     {
-        if(EmotionSlider.value < 0.5)
+        if (EmotionSlider.value < 0.5)
         {
             EmotionSlider.value += value * 0.01f;
         }
 
-    
+        BuffBase buff;
         if (value > 0)//随机获取一个buff
         {
-            int select = Random.Range(0, _bufftypeList.Count);
-            BuffType = _bufftypeList[select];
-            StartCoroutine(BuffType.ValueChange());
+            int select = Random.Range(0, _buffList.Count);
+            buff = _buffList[select];
+            //StartCoroutine(BuffType.ValueChange());
+            _currentBuffList.Add(buff);
+            buff.OnBuffEnter(false);
         }
         else//随机获取一个debuff
         {
-            int select = Random.Range(0, _debufftypeList.Count);
-            BuffType = _debufftypeList[select];
-            StartCoroutine(BuffType.ValueChange());
+            int select = Random.Range(0, _deBuffList.Count);
+            buff = _deBuffList[select];
+            _currentBuffList.Add(buff);
+            buff.OnBuffEnter(false);
         }
-        
+
 
     }
 
     public void ChangeImage(string imgType)
     {
         Sprite sp = Resources.Load("Drawings/EmotionType/" + imgType, typeof(Sprite)) as Sprite;
-        Icon.sprite = sp;   
+        Icon.sprite = sp;
     }
 
-    public void AddRangeBuff()
+    public void SetRandomBuff()
     {
         _rangeList.Clear();
+        IsSetRandomBuff = true;
         while (_rangeList.Count < RangeBuffCount)
         {
             int temp = Random.Range(0, RangeBuffCount);
@@ -194,28 +151,24 @@ public class Emotion : MonoBehaviour
             else
                 continue;
         }
-
+        BuffBase buff;
         for (int i = 0; i < RangeBuffCount; i++)
         {
-            BuffType = _bufftypeList[_rangeList[i]];
-            BuffType.StartRangeBuff();
+            buff = _buffList[_rangeList[i]];
+            _currentBuffList.Add(buff);
+            buff.OnBuffEnter(true);
         }
-        IsBuffClear = false;
+
     }
 
-    public void ClearRangeBuff()
-    {
-        for (int i = 0; i < RangeBuffCount; i++)
-        {
-            BuffType = _bufftypeList[_rangeList[i]];
-            BuffType.EndRangeBuff();
-        }
-        IsBuffClear = true;
-    }
-    
     public void PassiveEvent()
     {
-   
-      
+
+
+    }
+
+    public float getSliderValue()
+    {
+        return EmotionSlider.value;
     }
 }
