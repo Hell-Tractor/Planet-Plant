@@ -16,18 +16,21 @@ public class EmotionManager : MonoBehaviour
     private float _nextHour;
     TestBuff _testbuff = new TestBuff();
     TestBuff2 _testbuff2 = new TestBuff2();
+    public Image Icon;
+
     private List<BuffBase> _buffList = new List<BuffBase>();
     private List<BuffBase> _deBuffList = new List<BuffBase>();
     private List<BuffBase> _currentBuffList = new List<BuffBase>();
-    public Image Icon;
-
     private List<int> _rangeList = new List<int>();
+
+
     //情绪高于45%时，获得的随机buff数
     public int RangeBuffCount;
 
-    //是否清除随机获得的buff（情绪低于40%）
+    //随机BUFF是否存在
     bool IsSetRandomBuff = false;
 
+    //恶性事件触发概率
     public float PassiveEventRate;
 
 
