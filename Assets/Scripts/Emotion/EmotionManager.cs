@@ -27,11 +27,28 @@ public class EmotionManager : MonoBehaviour
     //恶性事件触发概率
     public float PassiveEventRate;
 
-    public void AddBuff(BuffBase buff) {
-        _buffList.Add(buff);
+    public GameObject Player;
+
+    public static EmotionManager Instance = null;
+
+    private void Start() {
+        Instance = this;
+
+        foreach (BuffID id in Enum.GetValues(typeof(BuffID))) {
+            var type = Type.GetType("BUFF." + id.ToString());
+            BuffBase buff = Activator.CreateInstance(type) as BuffBase;
+            if (buff != null) {
+                buff.Init();
+                if (buff.BuffType == BuffType.Buff) {
+                    _buffList.Add(buff);
+                } else {
+                    _deBuffList.Add(buff);
+                }
+            }
+        }
     }
 
-    void Update()
+    private void Update()
     {
         MoodSwing();
 
@@ -48,10 +65,10 @@ public class EmotionManager : MonoBehaviour
         {
             if (_currentBuffList[i] != null)
             {
-                _currentBuffList[i].OnBuffStay();
-                if (_currentBuffList[i].IsBuffEnded())
+                _currentBuffList[i].OnBuffStay(Player);
+                if (_currentBuffList[i].IsBuffEnded() || _currentBuffList[i].IsEndByEmo && EmotionSlider.value < 0.4f)
                 {
-                    _currentBuffList[i].OnBuffExit();
+                    _currentBuffList[i].OnBuffExit(Player);
                     _currentBuffList.RemoveAt(i);
                 }
             }
@@ -73,7 +90,7 @@ public class EmotionManager : MonoBehaviour
     }
 
 
-    public void MoodSwing() {
+    private void MoodSwing() {
         if (EmotionSlider.value > 0.41 && Time.time > _nextHour)
         {
             _nextHour = Time.time + IntervalHour;
@@ -89,10 +106,7 @@ public class EmotionManager : MonoBehaviour
     //事件影响
     public void AffectByEvent(float value)
     {
-        if (EmotionSlider.value < 0.5)
-        {
-            EmotionSlider.value += value * 0.01f;
-        }
+        EmotionSlider.value = Mathf.Clamp(EmotionSlider.value + value * 0.01f, -0.5f, 0.5f);
 
         BuffBase buff;
         if (value > 0)//随机获取一个buff
@@ -101,14 +115,14 @@ public class EmotionManager : MonoBehaviour
             buff = _buffList[select];
             //StartCoroutine(BuffType.ValueChange());
             _currentBuffList.Add(buff);
-            buff.OnBuffEnter(false);
+            buff.OnBuffEnter(false, Player);
         }
         else//随机获取一个debuff
         {
             int select = Random.Range(0, _deBuffList.Count);
             buff = _deBuffList[select];
             _currentBuffList.Add(buff);
-            buff.OnBuffEnter(false);
+            buff.OnBuffEnter(false, Player);
         }
 
 
@@ -120,7 +134,7 @@ public class EmotionManager : MonoBehaviour
         Icon.sprite = sp;
     }
 
-    public void SetRandomBuff()
+    private void SetRandomBuff()
     {
         _rangeList.Clear();
         IsSetRandomBuff = true;
@@ -139,7 +153,7 @@ public class EmotionManager : MonoBehaviour
         {
             buff = _buffList[_rangeList[i]];
             _currentBuffList.Add(buff);
-            buff.OnBuffEnter(true);
+            buff.OnBuffEnter(true, Player);
         }
 
     }
