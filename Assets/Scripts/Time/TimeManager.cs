@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     public int HourPerDay = 24;
     [Tooltip("每季节天数"), Range(1, 99)]
     public int DayPerSeason = 5;
-    public static TimeManager Instance;
+    public static TimeManager Instance { get; private set; } = null;
     public pp.DateTime CurrentTime {
         get {
             return _currentTime;

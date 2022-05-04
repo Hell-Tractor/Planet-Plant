@@ -23,9 +23,9 @@ namespace AI.FSM {
 
             Rigidbody2D rb = fsm.GetComponent<Rigidbody2D>();
             if (rb != null) {
-                CharacterProperties properties = fsm.GetComponent<CharacterProperties>();
-                if (properties != null) {
-                    rb.velocity = _direction * properties.Speed;
+                CharacterFSM characterFSM = fsm.GetComponent<CharacterFSM>();
+                if (characterFSM != null) {
+                    rb.velocity = _direction * characterFSM.Speed;
                 }
             }
         }
