@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using BUFF;
-//using pp;
-
 
 public class EmotionManager : MonoBehaviour
 {
@@ -14,8 +11,6 @@ public class EmotionManager : MonoBehaviour
     public float UpdateRate;
     public float IntervalHour;
     private float _nextHour;
-    TestBuff _testbuff = new TestBuff();
-    TestBuff2 _testbuff2 = new TestBuff2();
     public Image Icon;
 
     private List<BuffBase> _buffList = new List<BuffBase>();
@@ -23,21 +18,17 @@ public class EmotionManager : MonoBehaviour
     private List<BuffBase> _currentBuffList = new List<BuffBase>();
     private List<int> _rangeList = new List<int>();
 
-
-    //ÇéĞ÷¸ßÓÚ45%Ê±£¬»ñµÃµÄËæ»úbuffÊı
+    //æƒ…ç»ªé«˜äº45%æ—¶ï¼Œè·å¾—çš„éšæœºbuffæ•°
     public int RangeBuffCount;
 
-    //Ëæ»úBUFFÊÇ·ñ´æÔÚ
+    //éšæœºBUFFæ˜¯å¦å­˜åœ¨
     bool IsSetRandomBuff = false;
 
-    //¶ñĞÔÊÂ¼ş´¥·¢¸ÅÂÊ
+    //æ¶æ€§äº‹ä»¶è§¦å‘æ¦‚ç‡
     public float PassiveEventRate;
 
-
-    void Start()
-    {
-        _buffList.Add(_testbuff);
-        _buffList.Add(_testbuff2);
+    public void AddBuff(BuffBase buff) {
+        _buffList.Add(buff);
     }
 
     void Update()
@@ -68,7 +59,7 @@ public class EmotionManager : MonoBehaviour
 
         if (Mathf.Approximately(EmotionSlider.value, -0.4f))
         {
-            //¸ÅÂÊ´¥·¢¶ñĞÔÊÂ¼ş
+            //æ¦‚ç‡è§¦å‘æ¶æ€§äº‹ä»¶
             System.Random ra = new System.Random(unchecked((int)DateTime.Now.Ticks));
             int temp = ra.Next(1, 100);
             if (temp <= PassiveEventRate)
@@ -76,24 +67,13 @@ public class EmotionManager : MonoBehaviour
         }
         else if (Mathf.Approximately(EmotionSlider.value, -0.5f))
         {
-            //±ØÈ»·¢Éú¶ñĞÔÊÂ¼ş
+            //å¿…ç„¶å‘ç”Ÿæ¶æ€§äº‹ä»¶
             PassiveEvent();
         }
     }
 
 
-    public void MoodSwing()
-    {
-        //if(EmotionSlider.value > 0.4 && GetComponent<DateTime>().Hour > _nextHour)
-        //{
-        //    _nextHour = GetComponent<DateTime>().Hour + IntervalHour;
-        //    EmotionSlider.value -= UpdateRate * 0.01f; ;
-        //}
-        //else if(EmotionSlider.value < -0.4 && EmotionSlider.value > -0.5 && GetComponent<DateTime>().Hour > _nextHour)
-        //{
-        //    _nextHour = GetComponent<DateTime>().Hour + IntervalHour;
-        //    EmotionSlider.value -= UpdateRate * 0.01f;
-        //}
+    public void MoodSwing() {
         if (EmotionSlider.value > 0.41 && Time.time > _nextHour)
         {
             _nextHour = Time.time + IntervalHour;
@@ -106,7 +86,7 @@ public class EmotionManager : MonoBehaviour
         }
     }
 
-    //ÊÂ¼şÓ°Ïì
+    //äº‹ä»¶å½±å“
     public void AffectByEvent(float value)
     {
         if (EmotionSlider.value < 0.5)
@@ -115,7 +95,7 @@ public class EmotionManager : MonoBehaviour
         }
 
         BuffBase buff;
-        if (value > 0)//Ëæ»ú»ñÈ¡Ò»¸öbuff
+        if (value > 0)//éšæœºè·å–ä¸€ä¸ªbuff
         {
             int select = Random.Range(0, _buffList.Count);
             buff = _buffList[select];
@@ -123,7 +103,7 @@ public class EmotionManager : MonoBehaviour
             _currentBuffList.Add(buff);
             buff.OnBuffEnter(false);
         }
-        else//Ëæ»ú»ñÈ¡Ò»¸ödebuff
+        else//éšæœºè·å–ä¸€ä¸ªdebuff
         {
             int select = Random.Range(0, _deBuffList.Count);
             buff = _deBuffList[select];
