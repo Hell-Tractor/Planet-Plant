@@ -43,8 +43,13 @@ public class Inventory : MonoBehaviour, ISaveLoad
         // 保存物品
         this.Save();
     }
-    
+
+    private static int _lastFrame = -1;    
     public void Update() {
+        // 保证每帧之被执行一次
+        if (_lastFrame == Time.frameCount)
+            return;
+        _lastFrame = Time.frameCount;
         // 物品跟随鼠标
         if (_itemFollowMouse != null) {
             _itemFollowMouse.transform.position = Input.mousePosition;
@@ -126,7 +131,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
                 }
                 Item item = Instantiate<GameObject>(temp).GetComponent<Item>();
                 item.Count = data.Items[i].Count;
-                _slots[i].StoreItem(item);
+                _slots[i].SetItem(item);
             }
         }
     }
