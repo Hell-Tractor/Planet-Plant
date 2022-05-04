@@ -98,15 +98,15 @@ public class DialogUIController : MonoBehaviour {
         ));
     }
 
-    public void SetDialog(string speakerName, string content, Sprite drawing) {
+    public void SetDialog(string speakerName, string content, Sprite drawing, bool graduallySwap = true) {
         if (speakerName == "旁白") {
             if (!FullScreenDialog.gameObject.activeSelf)
-                this.SwapDialog(true);
+                this.SwapDialog(graduallySwap);
             Text text = FullScreenDialog.GetComponentInChildren<Text>();
             text.text = content;
         } else {
             if (speakerName != "unknown" && FullScreenDialog.gameObject.activeSelf)
-                this.SwapDialog(true);
+                this.SwapDialog(graduallySwap);
             if (speakerName == "unknown") {
                 NormalDialog.SetActive(true);
                 SpeakerTransform.gameObject.SetActive(false);

@@ -55,7 +55,6 @@ public class Inventory : MonoBehaviour, ISaveLoad
             EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) {
                 position = Input.mousePosition
             }, hits);
-            Debug.Log(hits.Count);
             foreach (var i in hits) {
                 if (i.gameObject.CompareTag("InventorySlot")) {
                     _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);

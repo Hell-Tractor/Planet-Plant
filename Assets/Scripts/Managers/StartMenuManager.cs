@@ -19,7 +19,7 @@ public class StartMenuManager : MonoBehaviour {
         if (StartGameBackground != null) {
             this._audioSource.PlayOneShot(StartGameSound);
             this.GetComponent<Image>().sprite = StartGameBackground;
-            var sceneLoader = SceneManager.LoadSceneAsync("Field", LoadSceneMode.Single);
+            var sceneLoader = SceneManager.LoadSceneAsync("BlackScene", LoadSceneMode.Single);
 
             sceneLoader.allowSceneActivation = false;
             await Task.Delay(TimeSpan.FromSeconds(WaitSeconds));

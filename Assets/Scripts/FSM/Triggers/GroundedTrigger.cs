@@ -8,23 +8,12 @@ namespace AI.FSM {
         }
 
         public override bool HandleTrigger(FSMBase fsm) {
-            var transform = fsm.transform;
-            RaycastHit2D leftHit = Physics2D.Raycast(
-                transform.position + new Vector3(-transform.localScale.x / 2.0f, -transform.localScale.y / 2.0f, 0),
-                Vector2.down,
-                0.01f,
-                ~LayerMask.GetMask("Player")
-            );
-            RaycastHit2D rightHit = Physics2D.Raycast(
-                transform.position + new Vector3(transform.localScale.x / 2.0f, -transform.localScale.y / 2.0f, 0),
-                Vector2.down,
-                0.01f,
-                ~LayerMask.GetMask("Player")
-            );
-            
-            return
-                leftHit.collider != null && leftHit.collider.CompareTag("Ground") ||
-                rightHit.collider != null && rightHit.collider.CompareTag("Ground");
+            foreach (Collider2D collider in fsm.GetComponents<Collider2D>()) {
+                if (collider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

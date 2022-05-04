@@ -90,6 +90,7 @@ public class DialogManager : MonoBehaviour {
     /// 在dialog更新前调用
     /// </summary>
     public event Action<Data.DialogData> BeforeDialogChange;
+    public event Action OnDialogEnd;
     private SelectionManager _selectionManager = null;
     private GameObject _selectionUI = null;
     private DialogUIController _dialogUIController = null;
@@ -132,11 +133,12 @@ public class DialogManager : MonoBehaviour {
         if (_dialogUIController == null) {
             var canvas = Instantiate(DialogCanvas);
             _dialogUIController = canvas.GetComponent<DialogUIController>();
-            _selectionUI = canvas.transform.Find("Selection").gameObject;
+            _selectionUI = canvas.transform.Find("Selection")?.gameObject ??
+                canvas.transform.GetChild(0).Find("Selection")?.gameObject;
             _selectionManager = _selectionUI?.GetComponent<SelectionManager>();
         }
         var dialog = _dialogAdapter.GetNext();
-        _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);
+        _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage, _isGraduallyChange(partID, startID));
     }
 
     public void JumpTo(int id) {
@@ -157,6 +159,14 @@ public class DialogManager : MonoBehaviour {
             _dialogUIController.Hide();
             _dialogAdapter = null;
             _dialogUIController = null;
+            this.OnDialogEnd?.Invoke();
         }
+    }
+
+    private bool _isGraduallyChange(int partID, int startID) {
+        if (partID == 1 && startID == 0) {
+            return false;
+        }
+        return true;
     }
 }

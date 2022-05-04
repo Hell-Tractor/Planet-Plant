@@ -8,6 +8,7 @@ public class Seed : Item, IUsable {
     }
     
     public void Use(GameObject target) {
+        Debug.Log("Use seed");
         if (target == null)
             return;
         Farmland farmland = target.GetComponent<Farmland>();
@@ -15,6 +16,8 @@ public class Seed : Item, IUsable {
             return;
         if (farmland.HasCrop)
             return;
+        Debug.Log("Planting seed");
+        this.Count--;
         GameObject crop = Instantiate(CropPrefab);
         farmland.Plant(crop.GetComponent<Crop>());
     }

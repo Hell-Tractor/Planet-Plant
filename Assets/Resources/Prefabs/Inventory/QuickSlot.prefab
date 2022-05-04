@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 900, y: 100}
+  m_AnchoredPosition: {x: 0, y: 75}
+  m_SizeDelta: {x: 1350, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2625607923121501353
 CanvasRenderer:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1178780546, guid: b2734caacede3f84786be0420d2855d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210f3db915cc54441b55d655b2bc2f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 9
+  Width: 8
   Height: 1
   SlotPrefab: {fileID: 3249180032422103845, guid: b9aa55ed25704274faf31b698279ae33, type: 3}
   InventoryData: {fileID: 11400000, guid: d6200cf4ea824a04997ff683221b7cd7, type: 2}
@@ -107,14 +107,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 5
+    m_Left: 32
     m_Right: 0
-    m_Top: 5
+    m_Top: 32
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 90, y: 90}
-  m_Spacing: {x: 10, y: 0}
+  m_CellSize: {x: 105, y: 90}
+  m_Spacing: {x: 46, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2

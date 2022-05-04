@@ -18,18 +18,20 @@ public class Crop : MonoBehaviour {
     private int _passedTime;
     private float _quantityCoefficient;
     private void Start() {
-        Water.IsAquatic = IsAquatic;
-        Water.Init();
-        Pest.Init();
-        Weed.Init();
-        Fertility.Init();
+        // Disable crop system
+        
+        // Water.IsAquatic = IsAquatic;
+        // Water.Init();
+        // Pest.Init();
+        // Weed.Init();
+        // Fertility.Init();
 
-        _currentStage = 0;
-        _passedTime = 0;
-        _quantityCoefficient = 0;
+        // _currentStage = 0;
+        // _passedTime = 0;
+        // _quantityCoefficient = 0;
 
-        TimeManager.Instance.OnDayChange += _onDayChange;
-        TimeManager.Instance.OnSeasonChange += _onSeasonChange;
+        // TimeManager.Instance.OnDayChange += _onDayChange;
+        // TimeManager.Instance.OnSeasonChange += _onSeasonChange;
     }
 
     private void _onDayChange() {

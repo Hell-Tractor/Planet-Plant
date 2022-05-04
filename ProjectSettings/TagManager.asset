@@ -15,8 +15,8 @@ TagManager:
   - Water
   - UI
   - InventorySlot
-  - 
-  - 
+  - Ground
+  - Farmland
   - 
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 432272125
+    locked: 0
+  - name: Player
+    uniqueID: 1453815895
     locked: 0

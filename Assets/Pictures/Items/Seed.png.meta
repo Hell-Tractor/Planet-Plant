@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 267377f50e03d4d46b1cf04baac2a370
+guid: 6601554bd8b39d04e801b4aa84148599
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 1080, z: 1920, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DialogBackground_0
+      name: Seed_0
       rect:
         serializedVersion: 2
-        x: 275
-        y: 81
-        width: 1375
-        height: 319
+        x: 149
+        y: 190
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f1da1d7baf46f840ad54f307b43e594
-      internalID: 1078900490
+      spriteID: 833dc76ee0a7ca942b8558785d5c0acc
+      internalID: 888445097
       vertices: []
       indices: 
       edges: []
@@ -128,15 +128,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DialogBackground_1: 1373252866
-      DialogBackground_0: 1078900490
+      Seed_0: 888445097
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

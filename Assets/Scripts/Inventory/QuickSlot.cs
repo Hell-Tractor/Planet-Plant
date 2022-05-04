@@ -5,25 +5,33 @@ public class QuickSlot : Inventory {
     private int _selectedSlot = 0;
 
     private new void Update() {
-        float mouseScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        if (mouseScrollWheel != 0) {
-            ChangeSlot(Math.Sign(mouseScrollWheel));
-        }
+        base.Update();
+        
+        // float mouseScrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        // if (mouseScrollWheel != 0) {
+        //     ChangeSlot(Math.Sign(mouseScrollWheel));
+        // }
 
         if (Input.GetMouseButtonDown(1)) {
-            Item item = _slots[_selectedSlot].GetItem();
+            // Item item = _slots[_selectedSlot].GetItem();
+            Item item = Inventory._itemFollowMouse;
             if (item != null && (item.Type == ItemType.Consumable || item.Type == ItemType.Seed || item.Type == ItemType.Tool)) {
                 (item as IUsable).Use(GetTarget());
+                item.UpdateCount();
+                if (item.Count <= 0) {
+                    Destroy(Inventory._itemFollowMouse.gameObject);
+                    Inventory._itemFollowMouse = null;
+                }
             }
         }
-
+        // deprecated:
         // todo 高亮当前选中的格子
-    }
+    }   
 
-    // todo 添加获取目标方法
     public GameObject GetTarget() {
-        // RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        return null;
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f, LayerMask.GetMask("Farmland"));
+        // Debug.Log(hit.collider);
+        return hit.collider?.gameObject;        
     }
 
     public void ChangeSlot(int delt) {
