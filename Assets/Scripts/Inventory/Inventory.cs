@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
 
     [HideInInspector]
     public static Item _itemFollowMouse = null;
+    public event Func<Item, bool> OnItemClick;
     
     protected Slot[] _slots;
 
@@ -37,8 +38,11 @@ public class Inventory : MonoBehaviour, ISaveLoad
         this.Load();
         // 关闭自动保存/加载
         this.DisableAutoSaveLoad();
+        this.Init();
     }
 
+    public virtual void Init() {}
+    
     public void OnDisable() {
         // 保存物品
         this.Save();
@@ -62,7 +66,9 @@ public class Inventory : MonoBehaviour, ISaveLoad
             }, hits);
             foreach (var i in hits) {
                 if (i.gameObject.CompareTag("InventorySlot")) {
-                    _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
+                    Slot slot = i.gameObject.GetComponent<Slot>();
+                    if (OnItemClick?.Invoke(slot.GetItem()) ?? true)
+                        _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
                     break;
                 }
             }

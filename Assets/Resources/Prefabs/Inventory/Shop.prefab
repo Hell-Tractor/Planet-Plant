@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 839287893771571149}
   - component: {fileID: 839287893771571146}
   - component: {fileID: 839287893771571147}
-  - component: {fileID: 839287893771571148}
+  - component: {fileID: 2540175270596227349}
+  - component: {fileID: 3375886496586456729}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_Spacing: {x: 120, y: 150}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &839287893771571148
+--- !u!114 &2540175270596227349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,13 +112,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 839287893771571145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf374ca4f7256ec41af8944b398ad18a, type: 3}
+  m_Script: {fileID: 11500000, guid: d6d85ae022e7f9b44a3ee3b5390285b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemDescription: {fileID: 6156871566983780418}
+--- !u!114 &3375886496586456729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839287893771571145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfda07f8b618544479321cf90b5252c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Width: 3
   Height: 3
   SlotPrefab: {fileID: 3249180032422103845, guid: 76e06e5b6f09f2148bf52d38e99dd5ac, type: 3}
-  InventoryData: {fileID: 11400000, guid: d9a6ac082fdedc542b2b01174196e62f, type: 2}
+  InventoryData: {fileID: 11400000, guid: 89bfcee7b266fa34196e13861932fc43, type: 2}
 --- !u!1 &3297709513657976247
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +163,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 839287893771571144}
+  - {fileID: 4252325121887630337}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -195,3 +210,83 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4584629017716534188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4252325121887630337}
+  - component: {fileID: 7400582461631679928}
+  - component: {fileID: 6156871566983780418}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4252325121887630337
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584629017716534188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1083469852970696620}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 180.3875, y: -15.3852}
+  m_SizeDelta: {x: 360.775, y: 445.3978}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7400582461631679928
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584629017716534188}
+  m_CullTransparentMesh: 1
+--- !u!114 &6156871566983780418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584629017716534188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1.5
+  m_Text: "\u540D\u5B57\n\u4EF7\u683C\n\u63CF\u8FF0"
