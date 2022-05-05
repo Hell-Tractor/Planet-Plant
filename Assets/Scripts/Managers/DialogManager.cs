@@ -45,7 +45,7 @@ class DialogAdapter {
         result.Content = dialog.Content;
         string imgPath = "Drawings/" + result.SpeakerName + "/" + dialog.Emotion;
         result.SpeakerImage = Resources.Load<Sprite>(imgPath);
-        if (result.SpeakerName == "NPC")
+        if (result.SpeakerName == "路人")
             result.SpeakerName = "???";
         return result;
     }
@@ -85,6 +85,7 @@ public class DialogManager : MonoBehaviour {
     public Data.SelectionDataSet SelectionDataSet;
 
     public Canvas DialogCanvas;
+    public List<Canvas> IgnoreCanvas = new List<Canvas>();
     public static DialogManager Instance;
     /// <summary>
     /// 在dialog更新前调用
@@ -93,14 +94,16 @@ public class DialogManager : MonoBehaviour {
     public event Action OnDialogEnd;
     private SelectionManager _selectionManager = null;
     private GameObject _selectionUI = null;
-    private DialogUIController _dialogUIController = null;
+    public DialogUIController UI { get; private set; } = null;
     private DialogAdapter _dialogAdapter = null;
 
     public int testDialog = -1;
+
+    private void Awake() {
+        Instance = this;
+    }
     
     private void Start() {
-        Instance = this;
-
         if (testDialog != -1)
             this.ShowDialog(testDialog);
     }
@@ -108,7 +111,7 @@ public class DialogManager : MonoBehaviour {
     private void Update() {
         if (Input.GetMouseButtonDown(0)) {
             if (_dialogAdapter != null && !_selectionUI.activeSelf) {
-                if (_dialogUIController?.PreventKeyEventProcessing == true) {
+                if (UI?.PreventKeyEventProcessing == true) {
                     return;
                 }
                 var rawDialog = _dialogAdapter.GetRawDialog();
@@ -130,15 +133,15 @@ public class DialogManager : MonoBehaviour {
 
     public void ShowDialog(int partID, int startID = 0) {
         _dialogAdapter = new DialogAdapter(partID, DialogDataSet.Dialogs, CharacterDataSet.Characters, startID);
-        if (_dialogUIController == null) {
+        if (UI == null) {
             var canvas = Instantiate(DialogCanvas);
-            _dialogUIController = canvas.GetComponent<DialogUIController>();
+            UI = canvas.GetComponent<DialogUIController>();
             _selectionUI = canvas.transform.Find("Selection")?.gameObject ??
                 canvas.transform.GetChild(0).Find("Selection")?.gameObject;
             _selectionManager = _selectionUI?.GetComponent<SelectionManager>();
         }
         var dialog = _dialogAdapter.GetNext();
-        _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage, _isGraduallyChange(partID, startID));
+        UI.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage, _isGraduallyChange(partID, startID));
     }
 
     public void JumpTo(int id) {
@@ -154,11 +157,11 @@ public class DialogManager : MonoBehaviour {
     public void ShowNext() {
         if (_dialogAdapter.HasNext()) {
             var dialog = _dialogAdapter.GetNext();
-            _dialogUIController.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);
+            UI.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);
         } else {
-            _dialogUIController.Hide();
+            UI.Hide();
             _dialogAdapter = null;
-            _dialogUIController = null;
+            UI = null;
             this.OnDialogEnd?.Invoke();
         }
     }

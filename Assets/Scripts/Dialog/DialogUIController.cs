@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,14 +16,17 @@ public class DialogUIController : MonoBehaviour {
 
     public float FullScreenShowDuration = 1f;
     public float FullScreenHideDuration = 2f;
-    public bool PreventKeyEventProcessing { get; private set; } = false;
+    public RandomController RandomController;
+    public bool PreventKeyEventProcessing { get; set; } = false;
     private Canvas[] _otherCanvas;
     private bool _activeFullScreen = false;
 
     private void Awake() {
+        this.RandomController.gameObject.SetActive(false);
+        List<Canvas> ignoreList = DialogManager.Instance.IgnoreCanvas;
         _otherCanvas = FindObjectsOfType<Canvas>();
         foreach (Canvas i in _otherCanvas)
-            if (!i.CompareTag("DialogCanvas"))
+            if (!i.CompareTag("DialogCanvas") && !ignoreList.Contains(i))
                 i.gameObject.SetActive(false);
         this.OnGUI();
     }
@@ -122,8 +126,10 @@ public class DialogUIController : MonoBehaviour {
     }
 
     public void Hide() {
+        List<Canvas> ignoreList = DialogManager.Instance.IgnoreCanvas;
         foreach (Canvas i in _otherCanvas)
-            i.gameObject.SetActive(true);
+            if (!ignoreList.Contains(i))
+                i.gameObject.SetActive(true);
         Destroy(gameObject);
     }
 }

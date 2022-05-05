@@ -7,6 +7,7 @@ TagManager:
   - InventorySlot
   - DialogCanvas
   - Ground
+  - FakePointMark
   layers:
   - Default
   - TransparentFX
@@ -49,4 +50,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1453815895
+    locked: 0
+  - name: Foreground
+    uniqueID: 42580051
     locked: 0

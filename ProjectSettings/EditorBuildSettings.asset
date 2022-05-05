@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: fcb78afb41ef92446885bafe92138d9a
@@ -15,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Field.unity
     guid: 6ce74c5380a2e134e95055c836ae92ca
   - enabled: 1
-    path: Assets/Scenes/LivingRoom.unity
+    path: Assets/Scenes/Home.unity
     guid: 6df84060eaed6fb4dbff4e74609cb252
   - enabled: 1
     path: Assets/Scenes/Market.unity
@@ -23,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BlackScene.unity
     guid: 25b56b234b7e9304bbb99d48ebc01868
+  - enabled: 1
+    path: Assets/Scenes/Minigames/GoingMarket.unity
+    guid: 2e5555e278ecd5a468dab4197f396561
   m_configObjects: {}

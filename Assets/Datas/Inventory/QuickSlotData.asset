@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items:
   - Id: planetplant:seed
-    Count: 9
+    Count: 6
   - Id: 
     Count: 0
   - Id: 
