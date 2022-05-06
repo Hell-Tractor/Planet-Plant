@@ -24,6 +24,7 @@ public class ToolbarManager : MonoBehaviour {
     public void ShowMap() {
         if (Map != null) {
             Map.SetActive(true);
+            QuickSlot?.SetActive(false);
         }
     }
 
@@ -33,12 +34,13 @@ public class ToolbarManager : MonoBehaviour {
         }
     }
 
-    public void LoadScene(string name) {
-        if (SceneManager.GetActiveScene().name == name) {
+    public void LoadScene(string targetScene) {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == targetScene || targetScene.StartsWith("Going") && targetScene.EndsWith(currentScene)) {
             this.ShowMessage("已经在这里了");
             return;
         }
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(targetScene);
     }
 
     public void ShowMessage(string message) {
