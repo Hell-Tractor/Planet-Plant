@@ -2,19 +2,20 @@ using System.Collections;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public class RandomController : MonoBehaviour {
 
-    public int Min = 1;
-    public int Max = 6;
     public float Duration = 2.0f;
     public float Delay = 1.0f;
     
-    private Text _text;
+    private Image _image;
+
+    public List<Sprite> ImageList;
 
     private void Awake() {
-        _text = this.GetComponentInChildren<Text>();
+        _image = this.GetComponent<Image>();
+        _image.sprite = ImageList[0];
     }
     
     public void Roll(Action<int> onComplete) {
@@ -24,19 +25,21 @@ public class RandomController : MonoBehaviour {
     private IEnumerator _rollCoroutine(Action<int> onComplete) {
         float timer = 0;
         float interval = 0.05f;
-        int counter = Min;
+        int counter = 0;
         
         do {
-            _text.text = counter.ToString();
+            _image.sprite = ImageList[counter];
             yield return new WaitForSeconds(interval);
             timer += interval;
-            if (++counter > Max) {
-                counter = Min;
+            if (++counter >= ImageList.Count) {
+                counter -= ImageList.Count;
             }
         } while (timer < Duration);
+
+        int result = UnityEngine.Random.Range(0, ImageList.Count);
+        _image.sprite = ImageList[result];
         
         yield return new WaitForSeconds(Delay);
-
-        onComplete?.Invoke(UnityEngine.Random.Range(Min, Max + 1));
+        onComplete?.Invoke(result + 1);
     }
 }

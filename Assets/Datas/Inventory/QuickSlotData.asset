@@ -15,8 +15,8 @@ MonoBehaviour:
   Items:
   - Id: planetplant:seed
     Count: 6
-  - Id: 
-    Count: 0
+  - Id: planetplant:seed
+    Count: 22
   - Id: 
     Count: 0
   - Id: 

@@ -26,4 +26,8 @@ public class ShopManager : MonoBehaviour {
         else
             ItemDescription.text = String.Format("{0}：\n价格：{1} 分\n{2}", item.Name, item.Price, item.Description);
     }
+
+    public void Close() {
+        this.transform.parent.gameObject.SetActive(false);
+    }
 }

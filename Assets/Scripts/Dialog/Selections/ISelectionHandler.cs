@@ -51,13 +51,15 @@ public class SelectionHandler4 : ISelectionHandler {
             return;
         }
         if (instance.IsRealMoney) {
-            dialogManager.ShowDialog(15);
+            dialogManager.ShowDialog(16);
         } else {
-            if (instance.IsAllFakePointFinded()) {
-                dialogManager.ShowDialog(16);
+            if (instance.IsSomeFakePointFinded()) {
+                dialogManager.ShowDialog(18);
             } else {
                 dialogManager.ShowDialog(17);
             }
         }
+
+        instance.Hide();
     }
 }

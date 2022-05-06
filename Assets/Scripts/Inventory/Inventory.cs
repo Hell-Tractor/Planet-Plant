@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
     
     protected Slot[] _slots;
 
-    public void Start() {
+    public void Awake() {
         _slots = new Slot[Width * Height];
         // 为物品栏创建空物品占位符
         for (int i = 0; i < Width * Height; ++i) {

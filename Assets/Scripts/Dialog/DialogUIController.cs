@@ -128,7 +128,7 @@ public class DialogUIController : MonoBehaviour {
     public void Hide() {
         List<Canvas> ignoreList = DialogManager.Instance.IgnoreCanvas;
         foreach (Canvas i in _otherCanvas)
-            if (!ignoreList.Contains(i))
+            if (!i.CompareTag("DialogCanvas") && !ignoreList.Contains(i))
                 i.gameObject.SetActive(true);
         Destroy(gameObject);
     }

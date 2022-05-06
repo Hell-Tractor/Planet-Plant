@@ -70,6 +70,10 @@ class DialogAdapter {
         return this._counter;
     }
 
+    public int GetPartID() {
+        return this._partID;
+    }
+    
     public bool HasNext() {
         return this._counter < this._dialogs.Count;
     }
@@ -91,7 +95,8 @@ public class DialogManager : MonoBehaviour {
     /// 在dialog更新前调用
     /// </summary>
     public event Action<Data.DialogData> BeforeDialogChange;
-    public event Action OnDialogEnd;
+    public event Action<Data.DialogData> AfterDialogChange;
+    public event Action<int> OnDialogEnd;
     private SelectionManager _selectionManager = null;
     private GameObject _selectionUI = null;
     public DialogUIController UI { get; private set; } = null;
@@ -140,8 +145,10 @@ public class DialogManager : MonoBehaviour {
                 canvas.transform.GetChild(0).Find("Selection")?.gameObject;
             _selectionManager = _selectionUI?.GetComponent<SelectionManager>();
         }
+        this.BeforeDialogChange?.Invoke(_dialogAdapter.GetRawDialog());
         var dialog = _dialogAdapter.GetNext();
         UI.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage, _isGraduallyChange(partID, startID));
+        this.AfterDialogChange?.Invoke(_dialogAdapter.GetRawDialog());
     }
 
     public void JumpTo(int id) {
@@ -156,13 +163,16 @@ public class DialogManager : MonoBehaviour {
 
     public void ShowNext() {
         if (_dialogAdapter.HasNext()) {
+            this.BeforeDialogChange?.Invoke(_dialogAdapter.GetRawDialog());
             var dialog = _dialogAdapter.GetNext();
             UI.SetDialog(dialog.SpeakerName, dialog.Content, dialog.SpeakerImage);
+            this.AfterDialogChange?.Invoke(_dialogAdapter.GetRawDialog());
         } else {
             UI.Hide();
-            _dialogAdapter = null;
             UI = null;
-            this.OnDialogEnd?.Invoke();
+            int id = _dialogAdapter.GetPartID();
+            _dialogAdapter = null;
+            this.OnDialogEnd?.Invoke(id);
         }
     }
 

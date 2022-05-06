@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MoneyScreeningManager : MonoBehaviour {
     public GameObject RealMoney;
     public GameObject FakeMoney;
+    [Range(0f, 1f)]
+    public float FakeMoneyRate = 0.5f;
 
     [ReadOnly]
     public bool IsRealMoney;
@@ -28,12 +30,19 @@ public class MoneyScreeningManager : MonoBehaviour {
             }
         }
 
-        DialogManager.Instance.ShowDialog(14);
+        // DialogManager.Instance.ShowDialog(14);
         
         RealMoney.SetActive(isReal);
         FakeMoney.SetActive(!isReal);
 
         IsRealMoney = isReal;
+    }
+
+    /// <summary>
+    /// 随机展示
+    /// </summary>
+    public void ShowMoney() {
+        this.ShowMoney(Random.Range(0f, 1f) < FakeMoneyRate);
     }
 
     private void Update() {
@@ -56,4 +65,11 @@ public class MoneyScreeningManager : MonoBehaviour {
         return this.FindedFakePointCount == this.SumFakePointCount;
     }
 
+    public bool IsSomeFakePointFinded() {
+        return this.FindedFakePointCount > 0;
+    }
+
+    public void Hide() {
+        this.gameObject.SetActive(false);
+    }
 }
