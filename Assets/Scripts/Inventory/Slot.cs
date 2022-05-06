@@ -1,5 +1,10 @@
 using UnityEngine;
 
+public enum SlotType {
+    Normal,
+    PickOnly
+}
+
 /// <summary>
 /// Inventory的每个格子
 /// </summary>
@@ -9,6 +14,19 @@ public class Slot : MonoBehaviour
     /// 存储的物品，默认为空
     /// </summary>
     protected Item _item = null;
+    [ReadOnly]
+    public SlotType Type;
+
+    private void Awake() {
+        this.Init();
+    }
+
+    /// <summary>
+    /// 子类必须初始化Type
+    /// </summary>
+    public virtual void Init() {
+        this.Type = SlotType.Normal;
+    }
 
     /// <summary>
     /// 存储物品

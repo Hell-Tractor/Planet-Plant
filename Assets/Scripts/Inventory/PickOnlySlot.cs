@@ -1,5 +1,8 @@
 using UnityEngine;
 public class PickOnlySlot : Slot {
+    public override void Init() {
+        this.Type = SlotType.PickOnly;
+    }
     public override Item StoreItem(Item item) {
         if (!this._item || item != null && this._item.EqualTo(item) != true)
             return item;

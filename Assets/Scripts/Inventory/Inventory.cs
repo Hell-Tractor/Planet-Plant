@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
 
     [HideInInspector]
     public static Item _itemFollowMouse = null;
-    public event Func<Item, bool> OnItemClick;
+    public event Func<Slot, bool> OnItemClick;
     
     protected Slot[] _slots;
 
@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
             foreach (var i in hits) {
                 if (i.gameObject.CompareTag("InventorySlot")) {
                     Slot slot = i.gameObject.GetComponent<Slot>();
-                    if (OnItemClick?.Invoke(slot.GetItem()) ?? true)
+                    if (OnItemClick?.Invoke(slot) ?? true)
                         _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
                     break;
                 }
