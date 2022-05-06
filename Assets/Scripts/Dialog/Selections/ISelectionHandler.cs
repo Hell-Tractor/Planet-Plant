@@ -18,7 +18,7 @@ public class SelectionHandler2 : ISelectionHandler {
             
             dialogManager.UI.PreventKeyEventProcessing = true;
             _random.Roll((result) => {
-                if (result + AI.FSM.CharacterFSM.Instance.Intelligence > 10) {
+                if (result + GlobalProperties.Instance.PlayerIntelligence > 10) {
                     dialogManager.ShowDialog(14);
                 } else {
                     dialogManager.ShowDialog(9);
