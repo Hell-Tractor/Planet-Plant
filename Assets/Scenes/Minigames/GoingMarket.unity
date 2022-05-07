@@ -2318,9 +2318,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5356156295106928736}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b79c695fdfae322468d2e3d2840a0ecc, type: 2}
+  m_Controller: {fileID: 9100000, guid: dcb41ab3c2720c74fa5490030542e7d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2453,6 +2453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   JumpSpeed: 8
+  CoinCount: 0
 --- !u!114 &5356156295106928743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2467,7 +2468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultStateID: 1
   currentStateID: 
-  animator: {fileID: 0}
+  animator: {fileID: 5356156295106928737}
 --- !u!1001 &7036441904622323017
 PrefabInstance:
   m_ObjectHideFlags: 0

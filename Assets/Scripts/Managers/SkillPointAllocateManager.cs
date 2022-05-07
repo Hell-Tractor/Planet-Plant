@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ public class SkillPointAllocateManager : MonoBehaviour {
     public GameObject ConfirmButton = null;
 
     private Dictionary<string, SkillPointChanger> _skillPointChangers;
+
+    public event Action OnConfirm;
 
     public void Start() {
         _skillPointChangers = new Dictionary<string, SkillPointChanger>();
@@ -44,5 +47,7 @@ public class SkillPointAllocateManager : MonoBehaviour {
         GlobalProperties.Instance.PlayerIntelligence = _skillPointChangers["Intelligence"].Points;
         GlobalProperties.Instance.PlayerPhysique = _skillPointChangers["Physique"].Points;
         this.gameObject.SetActive(false);
+
+        OnConfirm?.Invoke();
     }
 }

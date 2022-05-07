@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace AI.FSM {
@@ -12,6 +13,11 @@ namespace AI.FSM {
             base.OnStateStay(fsm);
 
             _input = Input.GetAxis("Horizontal");
+            fsm.transform.localScale = new Vector3(
+                Math.Sign(_input) * Math.Abs(fsm.transform.localScale.x), 
+                fsm.transform.localScale.y,
+                fsm.transform.localScale.z
+            );
         }
         public override void OnStateFixedStay(FSMBase fsm) {
             base.OnStateEnter(fsm);

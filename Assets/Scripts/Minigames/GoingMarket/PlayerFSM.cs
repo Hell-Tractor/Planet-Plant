@@ -1,9 +1,22 @@
 using UnityEngine;
 using AI.FSM;
+using System;
 
 namespace Minigame.GM {
 
     public class PlayerFSM : FSMBase {
+        public PlayerProperties Properties { get; private set; }
+        
+        protected override void init() {
+            this.transform.localScale = new Vector3(
+                Math.Abs(this.transform.localScale.x),
+                this.transform.localScale.y,
+                this.transform.localScale.z
+            );
+
+            Properties = this.GetComponent<PlayerProperties>();
+        }
+        
         protected override void setUpFSM() {
             base.setUpFSM();
 
@@ -21,6 +34,12 @@ namespace Minigame.GM {
             jumpingState.AddMap(FSMTriggerID.Grounded, FSMStateID.Idle);
             this._states.Add(jumpingState);
         }
-    }
 
+        private void OnTriggerEnter2D(Collider2D other) {
+            if (other.CompareTag("Coin")) {
+                this.Properties.CoinCount++;
+                Destroy(other.gameObject);
+            }
+        }
+    }
 }

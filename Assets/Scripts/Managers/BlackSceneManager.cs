@@ -11,7 +11,8 @@ public class BlackSceneManager : MonoBehaviour {
         _dialogManager.ShowDialog(1);
         _dialogManager.OnDialogEnd += (int id) => {
             SkillPointDialog?.SetActive(true);
-            SkillPointDialog?.GetComponent<SkillPointAllocateManager>()?.ConfirmButton?.GetComponent<Button>()?.onClick.AddListener(() => SceneManager.LoadScene("Field"));
+            if (SkillPointDialog != null)
+                SkillPointDialog.GetComponent<SkillPointAllocateManager>().OnConfirm += () => SceneManager.LoadScene("Field");
         };
 
     }
