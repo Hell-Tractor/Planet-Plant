@@ -8,11 +8,14 @@ public class BlackSceneManager : MonoBehaviour {
     private DialogManager _dialogManager;
     private void Start() {
         _dialogManager = this.GetComponent<DialogManager>();
-        _dialogManager.ShowDialog(1);
+        SkillPointDialog?.SetActive(true);
+        if (SkillPointDialog != null) {
+            SkillPointDialog.GetComponent<SkillPointAllocateManager>().OnConfirm += () => {
+                _dialogManager.ShowDialog(1);
+            };
+        }
         _dialogManager.OnDialogEnd += (int id) => {
-            SkillPointDialog?.SetActive(true);
-            if (SkillPointDialog != null)
-                SkillPointDialog.GetComponent<SkillPointAllocateManager>().OnConfirm += () => SceneManager.LoadScene("Field");
+            SceneManager.LoadScene("Field");
         };
 
     }
