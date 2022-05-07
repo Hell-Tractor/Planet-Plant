@@ -48,6 +48,6 @@ public class MarketManager : MonoBehaviour {
             };
         }
 
-        _dialogManager.ShowDialog(8);
+        // _dialogManager.ShowDialog(8);
     }
 }
