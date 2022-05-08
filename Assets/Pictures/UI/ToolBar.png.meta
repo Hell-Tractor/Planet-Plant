@@ -107,12 +107,12 @@ TextureImporter:
       name: ToolBar_0
       rect:
         serializedVersion: 2
-        x: 132
-        y: 399
-        width: 1286
-        height: 823
+        x: 539
+        y: 843
+        width: 413
+        height: 365
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,13 +125,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoldCoin
+      name: ToolBar_1
       rect:
         serializedVersion: 2
-        x: 588
-        y: 843
-        width: 364
-        height: 365
+        x: 182
+        y: 429
+        width: 383
+        height: 378
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +139,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42b228126f06d524ebc1f8ba9cf5a2be
-      internalID: 1903350781
+      spriteID: 03df3f303f3033e4e9377ee6771c1f6b
+      internalID: 1930565522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToolBar_2
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 551
+        width: 4
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4a70e90810c7847949fece1f4b97bd
+      internalID: 494320279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToolBar_3
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 417
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e09b883566ca8b4d86e5e5189ea568f
+      internalID: -722512152
       vertices: []
       indices: 
       edges: []
@@ -157,7 +199,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       ToolBar_0: -1246400940
-      GoldCoin: 1903350781
+      ToolBar_1: 1930565522
+      ToolBar_3: -722512152
+      ToolBar_2: 494320279
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
