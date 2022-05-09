@@ -107,9 +107,9 @@ TextureImporter:
       name: ToolBar_0
       rect:
         serializedVersion: 2
-        x: 539
+        x: 586
         y: 843
-        width: 413
+        width: 366
         height: 365
       alignment: 0
       pivot: {x: 0, y: 0}
