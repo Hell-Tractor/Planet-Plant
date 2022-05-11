@@ -107,12 +107,12 @@ TextureImporter:
       name: Window
       rect:
         serializedVersion: 2
-        x: 38
-        y: 693
-        width: 819
-        height: 921
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 55
+        y: 710
+        width: 790
+        height: 859
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: Newspaper
       rect:
         serializedVersion: 2
-        x: 899
-        y: 1037
-        width: 586
-        height: 615
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 917
+        y: 1052
+        width: 556
+        height: 605
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +149,12 @@ TextureImporter:
       name: Axe
       rect:
         serializedVersion: 2
-        x: 1515
-        y: 1122
-        width: 233
-        height: 483
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1532
+        y: 1140
+        width: 195
+        height: 433
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +170,12 @@ TextureImporter:
       name: BowAndPlate
       rect:
         serializedVersion: 2
-        x: 17
-        y: 380
-        width: 419
-        height: 304
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 24
+        y: 389
+        width: 406
+        height: 293
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: Pot
       rect:
         serializedVersion: 2
-        x: 465
-        y: 412
-        width: 246
-        height: 229
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 486
+        y: 426
+        width: 206
+        height: 194
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: Mouse
       rect:
         serializedVersion: 2
-        x: 19
-        y: 96
-        width: 259
-        height: 275
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 24
+        y: 113
+        width: 241
+        height: 235
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,12 +233,12 @@ TextureImporter:
       name: Water
       rect:
         serializedVersion: 2
-        x: 297
-        y: 91
-        width: 599
-        height: 288
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 305
+        y: 111
+        width: 577
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,12 +254,12 @@ TextureImporter:
       name: Socks
       rect:
         serializedVersion: 2
-        x: 909
-        y: 121
-        width: 272
-        height: 242
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 917
+        y: 137
+        width: 253
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: Bug
       rect:
         serializedVersion: 2
-        x: 1198
-        y: 129
-        width: 142
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1199
+        y: 130
+        width: 140
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,12 +296,12 @@ TextureImporter:
       name: Towel
       rect:
         serializedVersion: 2
-        x: 779
-        y: 387
-        width: 547
-        height: 286
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 785
+        y: 400
+        width: 521
+        height: 275
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,10 +317,10 @@ TextureImporter:
       name: Stool
       rect:
         serializedVersion: 2
-        x: 929
-        y: 704
-        width: 339
-        height: 244
+        x: 951
+        y: 710
+        width: 302
+        height: 234
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -338,12 +338,12 @@ TextureImporter:
       name: Vat
       rect:
         serializedVersion: 2
-        x: 1806
-        y: 1072
-        width: 448
-        height: 529
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1827
+        y: 1079
+        width: 412
+        height: 487
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,9 +359,9 @@ TextureImporter:
       name: Table
       rect:
         serializedVersion: 2
-        x: 1343
-        y: 18
-        width: 1025
+        x: 1349
+        y: 19
+        width: 1016
         height: 991
       alignment: 7
       pivot: {x: 0.5, y: 0}

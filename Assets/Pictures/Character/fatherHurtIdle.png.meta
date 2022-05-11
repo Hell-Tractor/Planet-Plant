@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1253cca5ca6e6464189c2be0515c3df9
+guid: ef6e2b864d2f9bd409b97b1066a7a0a1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bed_0
+      name: fatherHurtIdle_0
       rect:
         serializedVersion: 2
-        x: 506
-        y: 426
-        width: 1356
-        height: 815
+        x: 121
+        y: 44
+        width: 170
+        height: 525
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b1d312f614f7fb45a2248167a45ceb8
-      internalID: 1210399791
+      spriteID: 9fcd1d6a44257bc4381a21daceb8a7ac
+      internalID: 1400787962
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bed_0: 1210399791
+      fatherHurtIdle_0: 1400787962
+      fatherHurtIdle_1: 1095699264
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
