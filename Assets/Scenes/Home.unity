@@ -207,6 +207,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &106281111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106281114}
+  - component: {fileID: 106281113}
+  - component: {fileID: 106281112}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &106281112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106281111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c55288b69345ed4cab2e058cdb0c0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterDataSet: {fileID: 11400000, guid: a0499d877d99e4d4f8805c983d2fa6e5, type: 2}
+  DialogDataSet: {fileID: 11400000, guid: da6ae9837cb4b074c94772911b1c656d, type: 2}
+  SelectionDataSet: {fileID: 11400000, guid: 411491e343e5d2f4b934da00fa2538c9, type: 2}
+  DialogCanvas: {fileID: 4710791491751346170, guid: 99560b178d81f6a4781e2161201a0ba7, type: 3}
+  IgnoreCanvas: []
+  testDialog: 4
+--- !u!114 &106281113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106281111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef34a4e4e895d1a4587785864cdce257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartTime:
+    Season: 0
+    Day: 0
+    Hour: 0
+    Minute: 0
+    Second: 0
+  CurrentTimeString: 
+  TimeManagerData: {fileID: 0}
+  TimeRate: 60
+  HourPerDay: 24
+  DayPerSeason: 5
+--- !u!4 &106281114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106281111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.5516486, y: -2.6264741, z: -8.456174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &148516296
 PrefabInstance:
   m_ObjectHideFlags: 0

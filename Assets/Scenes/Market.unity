@@ -1417,7 +1417,7 @@ MonoBehaviour:
     Second: 0
   CurrentTimeString: 
   TimeManagerData: {fileID: 0}
-  TimeRate: 600
+  TimeRate: 1200
   HourPerDay: 1
   DayPerSeason: 5
 --- !u!1001 &1094905764
