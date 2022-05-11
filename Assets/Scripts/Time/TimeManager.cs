@@ -34,9 +34,11 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     public event Action OnDayChange;
     public event Action OnSeasonChange;
     
-    private void Start() {
+    private void Awake() {
         Instance = this;
-        
+    }
+    
+    private void Start() {
         _currentTime = StartTime;
         _currentTime.HourPerDay = HourPerDay;
         _currentTime.DayPerSeason = DayPerSeason;

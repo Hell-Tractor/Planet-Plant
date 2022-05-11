@@ -1,3 +1,4 @@
+using UnityEngine;
 public class ShopInventory : Inventory {
     public override void Init() {
         base.Init();
@@ -8,8 +9,8 @@ public class ShopInventory : Inventory {
             var item = slot.GetItem();
             if (item == null)
                 return false;
-            if ((AI.FSM.CharacterFSM.Instance?.Asset ?? -100) >= item.Price) {
-                AI.FSM.CharacterFSM.Instance.Asset -= item.Price;
+            if ((AI.FSM.CharacterFSM.Instance?.Asset ?? -100) >= item.CurrentPrice) {
+                AI.FSM.CharacterFSM.Instance.Asset -= item.CurrentPrice;
                 return true;
             }
             return false;

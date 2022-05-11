@@ -173,7 +173,14 @@ MonoBehaviour:
   Id: planetplant:seed
   Name: "\u79CD\u5B50"
   Description: "\u4E00\u9897\u666E\u901A\u7684\u79CD\u5B50"
-  Price: 1
+  InitPrice: 10
+  CurrentPrice: 0
   Type: 3
   Count: 1
+  Mu0: 1
+  sigma0: 0.02
+  eps0: 0.002
+  Mu1: 0
+  sigma1: 0.01
+  eps1: 0
   CropPrefab: {fileID: 1221677759468782840, guid: d8e4c1ca620f4de4d80cc1a4b49ee3b6, type: 3}

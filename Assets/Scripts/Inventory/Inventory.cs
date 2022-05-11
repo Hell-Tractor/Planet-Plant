@@ -25,6 +25,15 @@ public class Inventory : MonoBehaviour, ISaveLoad
     
     protected Slot[] _slots;
 
+    public IEnumerable<Item> Items {
+        get {
+            foreach (var slot in _slots) {
+                if (slot.GetItem() != null)
+                    yield return slot.GetItem();
+            }
+        }
+    }
+
     public void Awake() {
         _slots = new Slot[Width * Height];
         // 为物品栏创建空物品占位符
