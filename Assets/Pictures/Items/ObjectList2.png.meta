@@ -104,36 +104,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bed
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 757
-        width: 1618
-        height: 931
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16307a68f8c1082438b4fe6602c18d66
-      internalID: 1267883525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bear
       rect:
         serializedVersion: 2
-        x: 1817
-        y: 1182
-        width: 276
-        height: 378
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1821
+        y: 1187
+        width: 261
+        height: 368
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +128,12 @@ TextureImporter:
       name: ChairA
       rect:
         serializedVersion: 2
-        x: 1822
-        y: 294
-        width: 405
-        height: 605
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1839
+        y: 322
+        width: 364
+        height: 560
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +149,12 @@ TextureImporter:
       name: ChairB
       rect:
         serializedVersion: 2
-        x: 913
-        y: 15
-        width: 424
-        height: 691
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 943
+        y: 29
+        width: 373
+        height: 663
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +170,12 @@ TextureImporter:
       name: Light
       rect:
         serializedVersion: 2
-        x: 489
-        y: 160
-        width: 230
-        height: 521
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 495
+        y: 179
+        width: 212
+        height: 474
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,6 +183,27 @@ TextureImporter:
       bones: []
       spriteID: 9210282b1b896c249ad5eca959112778
       internalID: 1205780044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bed
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 774
+        width: 1596
+        height: 884
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3f51015cbf1d743a93295348b5999a
+      internalID: -722835598
       vertices: []
       indices: 
       edges: []
@@ -219,11 +219,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ObjectList2_1: -1484377416
       ChairA: 9187834
       ChairB: -1403763554
+      ObjectList2_2: -1277291966
+      ObjectList2_3: 1497789310
       Bear: 1470623694
       Light: 1205780044
-      Bed: 1267883525
+      Bed: -722835598
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

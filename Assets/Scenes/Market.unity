@@ -1340,6 +1340,7 @@ GameObject:
   - component: {fileID: 1090395533}
   - component: {fileID: 1090395532}
   - component: {fileID: 1090395534}
+  - component: {fileID: 1090395535}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1396,6 +1397,29 @@ MonoBehaviour:
   RealMoneyShower: {fileID: 593141442}
   MoneyScreeningManager: {fileID: 670581767}
   Buyer: {fileID: 2038158750}
+--- !u!114 &1090395535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090395531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef34a4e4e895d1a4587785864cdce257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartTime:
+    Season: 0
+    Day: 0
+    Hour: 0
+    Minute: 0
+    Second: 0
+  CurrentTimeString: 
+  TimeManagerData: {fileID: 0}
+  TimeRate: 1200
+  HourPerDay: 1
+  DayPerSeason: 5
 --- !u!1001 &1094905764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8089,7 +8113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3297709513657976247, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b13de34e72c7e44096191e525430aae, type: 3}

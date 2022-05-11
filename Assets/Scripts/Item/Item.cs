@@ -21,15 +21,27 @@ public class Item : MonoBehaviour {
     [Tooltip("物品描述"), Multiline(3)]
     public string Description;
     [Tooltip("当前所有者的出售单价")]
-    public int Price;
+    public int InitPrice;
+    [ReadOnly]
+    public int CurrentPrice;
     [Tooltip("物品类型")]
     public ItemType Type;
     [Tooltip("物品个数"), Range(1, 999)]
     public int Count = 1;
 
+    // todo 需要调整
+    [Header("Update Parameters")]
+    public float Mu0 = 1f;
+    public float sigma0 = 0.2f;
+    public float eps0 = 0.005f;
+    public float Mu1 = 0f;
+    public float sigma1 = 0.5f;
+    public float eps1 = 0;
+
     private void Start() {
         this.UpdateCount();
         this.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        this.CurrentPrice = this.InitPrice;
     }
 
     /// <summary>
@@ -47,5 +59,15 @@ public class Item : MonoBehaviour {
         var textComponent = this.GetComponentInChildren<Text>();
         if (textComponent)
             textComponent.text = Count.ToString();
+    }
+
+    public virtual void UpdatePrice() {
+        float lastPrice = this.CurrentPrice;
+        float f = Utils.Random.Normal(Mu0 + eps0 * (InitPrice - lastPrice), sigma0) * lastPrice +
+                    Utils.Random.Normal(Mu1 + eps1 * (InitPrice - lastPrice), sigma1);
+        this.CurrentPrice = Mathf.RoundToInt(
+            f
+        );
+        Debug.Log(f);
     }
 }
