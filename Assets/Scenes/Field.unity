@@ -651,6 +651,93 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4800880075070074083, guid: 4ac92c21436cc054d9cc6a00222c7779, type: 3}
   m_PrefabInstance: {fileID: 419280489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &450751564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450751567}
+  - component: {fileID: 450751566}
+  - component: {fileID: 450751565}
+  - component: {fileID: 450751568}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &450751565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450751564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b4126eacb587a45a424d5fc3bc8585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &450751566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450751564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef34a4e4e895d1a4587785864cdce257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartTime:
+    HourPerDay: 24
+    DayPerSeason: 4
+    Season: 0
+    Day: 0
+    Hour: 0
+    Minute: 0
+    Second: 0
+  CurrentTimeString: 
+  TimeManagerData: {fileID: 11400000, guid: 5c1083074ba8ad149b68a1cd1e6dd3eb, type: 2}
+  TimeRate: 60
+--- !u!4 &450751567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450751564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 102.9873, y: 30.25632, z: -0.56419283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &450751568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450751564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c55288b69345ed4cab2e058cdb0c0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterDataSet: {fileID: 11400000, guid: a0499d877d99e4d4f8805c983d2fa6e5, type: 2}
+  DialogDataSet: {fileID: 11400000, guid: da6ae9837cb4b074c94772911b1c656d, type: 2}
+  SelectionDataSet: {fileID: 11400000, guid: 411491e343e5d2f4b934da00fa2538c9, type: 2}
+  DialogCanvas: {fileID: 4710791491751346170, guid: 99560b178d81f6a4781e2161201a0ba7, type: 3}
+  IgnoreCanvas: []
+  testDialog: -1
 --- !u!224 &542031325 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 421245832774302725, guid: 25482aecb70e0a0489343431672a8985, type: 3}
@@ -869,11 +956,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &651034546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2625607923121501350, guid: f00a3ddff2d5daa46b14f8ca2c25acbc, type: 3}
-  m_PrefabInstance: {fileID: 1329045659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &831365184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10191,14 +10273,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 421245832774302776, guid: 25482aecb70e0a0489343431672a8985, type: 3}
-      propertyPath: QuickSlot
-      value: 
-      objectReference: {fileID: 651034546}
-    - target: {fileID: 7861949978906865012, guid: 25482aecb70e0a0489343431672a8985, type: 3}
-      propertyPath: QuickSlot
-      value: 
-      objectReference: {fileID: 651034546}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25482aecb70e0a0489343431672a8985, type: 3}
 --- !u!1001 &1066085729468305690

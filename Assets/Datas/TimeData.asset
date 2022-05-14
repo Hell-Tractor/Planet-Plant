@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: TimeData
   m_EditorClassIdentifier: 
   CurrentTime:
+    HourPerDay: 24
+    DayPerSeason: 4
     Season: 0
     Day: 0
     Hour: 0
-    Minute: 0
-    Second: 0
+    Minute: 48
+    Second: 10.40007
+  IsPaused: 0
+  TimeRate: 60

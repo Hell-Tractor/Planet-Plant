@@ -14,40 +14,54 @@ public class MarketManager : MonoBehaviour {
         _dialogManager = DialogManager.Instance;
         Buyer?.SetActive(false);
         if (_dialogManager != null) {
-            _dialogManager.AfterDialogChange += (Data.DialogData dialogData) => {
-                if (dialogData.ID == 34) {
-                    Buyer?.SetActive(true);
-                    return;
-                }
-                
-                // 跳转到真币展示
-                foreach (var id in _jumpToRealMoneyShowDialogIDList) {
-                    if (dialogData.ID == id) {
-                        _dialogManager.ShowDialog(15);
-                        return;
-                    }
-                }
-                
-                // 真币展示
-                if (dialogData.ID == 63) {
-                    _dialogManager.UI.PreventKeyEventProcessing = true;
-                    RealMoneyShower?.gameObject.SetActive(true);
-                    RealMoneyShower?.Show(() => {
-                        _dialogManager.ShowNext();
-                        _dialogManager.UI.PreventKeyEventProcessing = false;
-                    });
-                    return;
-                }
+            _dialogManager.AfterDialogChange += this._onMarketDialogChange;
 
-                // 假币甄别
-                if (dialogData.ID == 64) {
-                    MoneyScreeningManager?.gameObject.SetActive(true);
-                    MoneyScreeningManager?.ShowMoney();
-                    return;
-                }
-            };
+            if (GlobalProperties.Instance.isFristTimeToMarket) {
+                GlobalProperties.Instance.isFristTimeToMarket = false;
+
+                _dialogManager.ShowDialog(21);
+            }
         }
 
         // _dialogManager.ShowDialog(8);
+    }
+
+    private void OnDestory() {
+        if (_dialogManager != null) {
+            _dialogManager.AfterDialogChange -= this._onMarketDialogChange;
+        }
+    }
+
+    private void _onMarketDialogChange(Data.DialogData dialogData) {
+        if (dialogData.ID == 34) {
+            Buyer?.SetActive(true);
+            return;
+        }
+        
+        // 跳转到真币展示
+        foreach (var id in _jumpToRealMoneyShowDialogIDList) {
+            if (dialogData.ID == id) {
+                _dialogManager.ShowDialog(15);
+                return;
+            }
+        }
+        
+        // 真币展示
+        if (dialogData.ID == 63) {
+            _dialogManager.UI.PreventKeyEventProcessing = true;
+            RealMoneyShower?.gameObject.SetActive(true);
+            RealMoneyShower?.Show(() => {
+                _dialogManager.ShowNext();
+                _dialogManager.UI.PreventKeyEventProcessing = false;
+            });
+            return;
+        }
+
+        // 假币甄别
+        if (dialogData.ID == 64) {
+            MoneyScreeningManager?.gameObject.SetActive(true);
+            MoneyScreeningManager?.ShowMoney();
+            return;
+        }
     }
 }

@@ -7,4 +7,6 @@ public class TimeManagerData : ScriptableObject
 {
     public pp.DateTime CurrentTime;
     public List<Tuple<pp.DateTime, Action>> TimedTasks = new List<Tuple<pp.DateTime, Action>>();
+    public bool IsPaused;
+    public int TimeRate;
 }

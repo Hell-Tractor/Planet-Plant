@@ -11,8 +11,10 @@ namespace pp {
 
     [System.Serializable]
     public class DateTime {
-        public int HourPerDay { get; set; }
-        public int DayPerSeason { get; set; }
+        [Tooltip("每日小时数"), Range(1, 999)]
+        public int HourPerDay = 24;
+        [Tooltip("每季节天数"), Range(1, 99)]
+        public int DayPerSeason = 4;
         public int Season;
         [Range(1, 999)]
         public int Day;

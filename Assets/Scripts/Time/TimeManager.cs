@@ -15,10 +15,10 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     public TimeManagerData TimeManagerData;
     [Tooltip("游戏时间与现实时间的倍率")]
     public int TimeRate = 60;
-    [Tooltip("每日小时数"), Range(1, 999)]
-    public int HourPerDay = 24;
-    [Tooltip("每季节天数"), Range(1, 99)]
-    public int DayPerSeason = 5;
+    // [Tooltip("每日小时数"), Range(1, 999)]
+    // public int HourPerDay = 24;
+    // [Tooltip("每季节天数"), Range(1, 99)]
+    // public int DayPerSeason = 5;
     public static TimeManager Instance { get; private set; } = null;
     public pp.DateTime CurrentTime {
         get {
@@ -40,12 +40,14 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     
     private void Start() {
         _currentTime = StartTime;
-        _currentTime.HourPerDay = HourPerDay;
-        _currentTime.DayPerSeason = DayPerSeason;
+        // _currentTime.HourPerDay = HourPerDay;
+        // _currentTime.DayPerSeason = DayPerSeason;
         CurrentTimeString = _currentTime.ToString();
         this.Load();
         // 启用自动保存/加载
         this.EnableAutoSaveLoad();
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update() {
@@ -105,6 +107,8 @@ public class TimeManager : MonoBehaviour, ISaveLoad
         }
         data.CurrentTime = _currentTime;
         data.TimedTasks = _timedTasks;
+        data.IsPaused = _isPaused;
+        data.TimeRate = TimeRate;
     }
 
     public void Load() {
@@ -113,8 +117,13 @@ public class TimeManager : MonoBehaviour, ISaveLoad
             Debug.LogWarning("TimeManagerData is null");
             return;
         }
+        OnDayChange = null;
+        OnSeasonChange = null;
+        
         _currentTime = data.CurrentTime;
         _timedTasks = data.TimedTasks;
+        _isPaused = data.IsPaused;
+        TimeRate = data.TimeRate;
     }
 
     public ScriptableObject GetDataContainer() {

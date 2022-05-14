@@ -6,6 +6,10 @@ public class GlobalProperties : Utils.Singleton<GlobalProperties>, Utils.ISaveLo
     public int FamilyAsset = 200 * 100;
     public int PlayerIntelligence;
     public int PlayerPhysique;
+    public bool isFirstTimeToField = true;
+    public bool isFirstTimeToGoingMarket = true;
+    public bool isFristTimeToMarket = true;
+    public bool isFirstTimeGoHome = true;
 
     public GlobalProperties() {
         this.EnableAutoSaveLoad(false);
