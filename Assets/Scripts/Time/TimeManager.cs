@@ -43,6 +43,7 @@ public class TimeManager : MonoBehaviour, ISaveLoad
         _currentTime.HourPerDay = HourPerDay;
         _currentTime.DayPerSeason = DayPerSeason;
         CurrentTimeString = _currentTime.ToString();
+        this.Load();
         // 启用自动保存/加载
         this.EnableAutoSaveLoad();
     }
@@ -68,6 +69,9 @@ public class TimeManager : MonoBehaviour, ISaveLoad
                 }
             }
         }
+    }
+    private void OnDestory() {
+        this.Save();
     }
     /// <summary>
     /// 添加定时任务

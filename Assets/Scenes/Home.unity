@@ -262,7 +262,7 @@ MonoBehaviour:
     Minute: 0
     Second: 0
   CurrentTimeString: 
-  TimeManagerData: {fileID: 0}
+  TimeManagerData: {fileID: 11400000, guid: 5c1083074ba8ad149b68a1cd1e6dd3eb, type: 2}
   TimeRate: 60
   HourPerDay: 24
   DayPerSeason: 5
