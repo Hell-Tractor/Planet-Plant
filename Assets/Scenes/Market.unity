@@ -1366,7 +1366,7 @@ MonoBehaviour:
   DialogCanvas: {fileID: 4710791491751346170, guid: 99560b178d81f6a4781e2161201a0ba7, type: 3}
   IgnoreCanvas:
   - {fileID: 424717120}
-  testDialog: -1
+  testDialog: 8
 --- !u!4 &1090395533
 Transform:
   m_ObjectHideFlags: 0
