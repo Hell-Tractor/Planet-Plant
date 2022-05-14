@@ -215,7 +215,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 253319840}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &253319839
 GameObject:
@@ -248,6 +248,7 @@ Transform:
   - {fileID: 4317288}
   - {fileID: 1368917976}
   - {fileID: 796038292}
+  - {fileID: 169726337}
   - {fileID: 1311247390}
   - {fileID: 346722478}
   - {fileID: 982185420}
@@ -255,7 +256,6 @@ Transform:
   - {fileID: 1600033068}
   - {fileID: 224093709}
   - {fileID: 707494391}
-  - {fileID: 169726337}
   - {fileID: 2084728344}
   - {fileID: 853886833}
   - {fileID: 1762316656}
@@ -865,7 +865,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 253319840}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &724948909
 GameObject:
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   DialogCanvas: {fileID: 4710791491751346170, guid: 99560b178d81f6a4781e2161201a0ba7, type: 3}
   IgnoreCanvas:
   - {fileID: 424717120}
-  testDialog: 8
+  testDialog: -1
 --- !u!4 &1090395533
 Transform:
   m_ObjectHideFlags: 0
@@ -8113,7 +8113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3297709513657976247, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b13de34e72c7e44096191e525430aae, type: 3}

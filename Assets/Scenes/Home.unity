@@ -242,7 +242,7 @@ MonoBehaviour:
   SelectionDataSet: {fileID: 11400000, guid: 411491e343e5d2f4b934da00fa2538c9, type: 2}
   DialogCanvas: {fileID: 4710791491751346170, guid: 99560b178d81f6a4781e2161201a0ba7, type: 3}
   IgnoreCanvas: []
-  testDialog: 4
+  testDialog: -1
 --- !u!114 &106281113
 MonoBehaviour:
   m_ObjectHideFlags: 0
