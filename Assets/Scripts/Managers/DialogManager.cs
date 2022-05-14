@@ -22,6 +22,7 @@ class DialogAdapter {
         this._dialogs = (
             from dialog in dialogs
             where dialog.PartID == partid
+            orderby dialog.ID
             select dialog
         ).ToList();
 
