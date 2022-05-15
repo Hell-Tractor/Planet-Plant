@@ -25,6 +25,7 @@ public class TimeManager : MonoBehaviour, ISaveLoad
             return _currentTime;
         }
     }
+    [SerializeField]
     private bool _isPaused = false;
     private pp.DateTime _currentTime;
     private List<Tuple<pp.DateTime, Action>> _timedTasks = new List<Tuple<pp.DateTime, Action>>();
@@ -43,7 +44,6 @@ public class TimeManager : MonoBehaviour, ISaveLoad
         // _currentTime.HourPerDay = HourPerDay;
         // _currentTime.DayPerSeason = DayPerSeason;
         CurrentTimeString = _currentTime.ToString();
-        this.Load();
         // 启用自动保存/加载
         this.EnableAutoSaveLoad();
 

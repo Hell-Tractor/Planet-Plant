@@ -895,6 +895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383445991}
   - component: {fileID: 383445990}
+  - component: {fileID: 383445992}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -931,6 +932,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383445992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383445989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c55288b69345ed4cab2e058cdb0c0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterDataSet: {fileID: 11400000, guid: a0499d877d99e4d4f8805c983d2fa6e5, type: 2}
+  DialogDataSet: {fileID: 11400000, guid: da6ae9837cb4b074c94772911b1c656d, type: 2}
+  SelectionDataSet: {fileID: 11400000, guid: 411491e343e5d2f4b934da00fa2538c9, type: 2}
+  DialogCanvas: {fileID: 4710791491751346170, guid: 99560b178d81f6a4781e2161201a0ba7, type: 3}
+  IgnoreCanvas: []
+  testDialog: -1
 --- !u!4 &398664009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7036441905788656126, guid: 5357a82385ad6784dba6e460231f2f36, type: 3}
@@ -1546,7 +1565,7 @@ BoxCollider2D:
     oldSize: {x: 50.04163, y: 10.8}
     newSize: {x: 50.04163, y: 10.8}
     adaptiveTilingThreshold: 0.5
-    drawMode: 1
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
@@ -1597,7 +1616,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
+  m_DrawMode: 0
   m_Size: {x: 50.04163, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -2282,7 +2301,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5cc96a35645099247a865389841ce640, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2371,12 +2390,12 @@ SpriteRenderer:
   m_SortingLayerID: 1453815895
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a39068d5e6dbe1e4e83276c1e13e2108, type: 3}
+  m_Sprite: {fileID: 1351182706, guid: a39068d5e6dbe1e4e83276c1e13e2108, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.4, y: 4.87}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2410,12 +2429,12 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3.6}
+  m_Offset: {x: 0, y: 3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4, y: 6}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.4, y: 4.87}
+    newSize: {x: 1.4, y: 4.87}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2436,7 +2455,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.6}
+  m_Offset: {x: 0, y: 1}
   serializedVersion: 2
   m_Radius: 0.6
 --- !u!114 &5356156295106928742

@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
 
     public virtual void Init() {}
     
-    public void OnDisable() {
+    public void OnDestory() {
         // 保存物品
         this.Save();
     }

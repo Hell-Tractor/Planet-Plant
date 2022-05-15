@@ -7,5 +7,7 @@ public class FieldManager : MonoBehaviour {
 
             DialogManager.Instance.ShowDialog(19);
         }
+
+        TimeManager.Instance.Resume();
     }
 }
