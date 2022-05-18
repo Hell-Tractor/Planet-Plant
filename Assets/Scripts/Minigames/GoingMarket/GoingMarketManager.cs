@@ -9,7 +9,7 @@ public class GoingMarketManager : MonoBehaviour {
         if (GlobalProperties.Instance.isFirstTimeToGoingMarket) {
             GlobalProperties.Instance.isFirstTimeToGoingMarket = false;
 
-            DialogManager.Instance.ShowDialog(20);
+            // DialogManager.Instance.ShowDialog(20);
         }
     }
 

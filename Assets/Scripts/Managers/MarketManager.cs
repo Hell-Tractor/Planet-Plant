@@ -19,7 +19,7 @@ public class MarketManager : MonoBehaviour {
             if (GlobalProperties.Instance.isFristTimeToMarket) {
                 GlobalProperties.Instance.isFristTimeToMarket = false;
 
-                _dialogManager.ShowDialog(21);
+                // _dialogManager.ShowDialog(21);
             }
         }
 

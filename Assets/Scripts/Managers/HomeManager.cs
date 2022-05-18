@@ -5,7 +5,7 @@ public class HomeManager : MonoBehaviour {
         if (GlobalProperties.Instance.isFirstTimeGoHome) {
             GlobalProperties.Instance.isFirstTimeGoHome = false;
 
-            DialogManager.Instance.ShowDialog(22);
+            // DialogManager.Instance.ShowDialog(22);
         }
     }
 }
