@@ -5,7 +5,7 @@ public class FieldManager : MonoBehaviour {
         if (GlobalProperties.Instance.isFirstTimeToField) {
             GlobalProperties.Instance.isFirstTimeToField = false;
 
-            DialogManager.Instance.ShowDialog(19);
+            // DialogManager.Instance.ShowDialog(19);
         }
 
         TimeManager.Instance.Resume();
