@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class ShopInventory : Inventory {
     public override void Init() {
@@ -15,5 +16,17 @@ public class ShopInventory : Inventory {
             }
             return false;
         };
+    }
+
+    private Action _onClose = null;
+    
+    public void Show(Action onClose = null) {
+        _onClose = onClose;
+        this.transform.parent.gameObject.SetActive(true);
+    }
+
+    private void OnDisable() {
+        _onClose?.Invoke();
+        _onClose = null;
     }
 }

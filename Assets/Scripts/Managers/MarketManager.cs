@@ -4,7 +4,7 @@ public class MarketManager : MonoBehaviour {
     public RealMoneyShowManager RealMoneyShower = null;
     public MoneyScreeningManager MoneyScreeningManager = null;
     public GameObject Buyer = null;
-    public GameObject Shop = null;
+    public ShopInventory Shop = null;
     public BubbleDialogController BubbleDialogController = null;
     private DialogManager _dialogManager;
     private int[] _jumpToRealMoneyShowDialogIDList = new int[] {
@@ -38,7 +38,7 @@ public class MarketManager : MonoBehaviour {
         BubbleDialogController?.Clear();
         BubbleDialogController?.AddDialog("右边是情绪条，你现在的情绪值有点低，可以通过购买喜欢的物品来提高情绪值。情绪值若太低，有一定几率做出不理智事件哦！", () => {
             if (Input.GetMouseButton(0)) {
-                Shop.SetActive(true);
+                Shop.Show(() => _dialogManager.ShowDialog(8));
                 return true;
             }
             return false;

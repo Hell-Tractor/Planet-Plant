@@ -181,6 +181,9 @@ public class DialogManager : MonoBehaviour {
         if (partID == 1 && startID == 0) {
             return false;
         }
+        if (partID == 7 && startID == 0) {
+            return false;
+        }
         return true;
     }
 }
