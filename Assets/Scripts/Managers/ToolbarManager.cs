@@ -7,6 +7,7 @@ public class ToolbarManager : MonoBehaviour {
     public GameObject QuickSlot = null;
     public GameObject Map = null;
     public Text MessageBar = null;
+    public Text CoinCount = null;
     
     [Header("UI显示设置")]
     public Canvas Canvas = null;
@@ -23,6 +24,15 @@ public class ToolbarManager : MonoBehaviour {
         SceneManager.activeSceneChanged += (Scene oldScene, Scene newScene) => {
             Canvas?.gameObject.SetActive(ShowToolBarSceneList.Contains(newScene.name));
         };
+    }
+
+    private void OnGUI() {
+        AI.FSM.CharacterFSM fsm = AI.FSM.CharacterFSM.Instance;
+        if (fsm != null) {
+            CoinCount.text = string.Format("{0:N2}元", fsm.Asset / 100.0f);
+        } else {
+            CoinCount.text = "N/A";
+        }
     }
 
     public void ChangeQuickSlotState() {

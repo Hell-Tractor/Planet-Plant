@@ -18,7 +18,7 @@ public class GoingMarketManager : MonoBehaviour {
 
     private void _setupBeginnerGuide() {
         BubbleDialogController?.Clear();
-        BubbleDialogController?.AddDialog("去集市路途遥远<br>需要玩一个小小的游戏<br><b>AD</b>左右移动<br><b>W</b>键跳跃<br>收集金币可转化成你的资产哦！", () => false);
+        BubbleDialogController?.AddDialog("去集市路途遥远\n需要玩一个小小的游戏\n<b>AD</b>左右移动\n<b>W</b>键跳跃\n收集金币可转化成你的资产哦！", () => false);
     }
     
     private void Update() {
