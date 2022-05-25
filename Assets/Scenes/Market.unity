@@ -133,11 +133,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4311095385471093539, guid: 6e293cdb6a8030346830f6a88629748d, type: 3}
   m_PrefabInstance: {fileID: 2044214049}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &171111077 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3297709513657976247, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
-  m_PrefabInstance: {fileID: 1867941559}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &171111078 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1083469852970696620, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
@@ -1204,7 +1199,7 @@ MonoBehaviour:
   RealMoneyShower: {fileID: 593141442}
   MoneyScreeningManager: {fileID: 670581767}
   Buyer: {fileID: 2038158750}
-  Shop: {fileID: 171111077}
+  Shop: {fileID: 1867941560}
   BubbleDialogController: {fileID: 2080546556}
 --- !u!1001 &1094905764
 PrefabInstance:
@@ -7491,6 +7486,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
+--- !u!114 &1867941560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3375886496586456729, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
+  m_PrefabInstance: {fileID: 1867941559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfda07f8b618544479321cf90b5252c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2035793100
 PrefabInstance:
   m_ObjectHideFlags: 0

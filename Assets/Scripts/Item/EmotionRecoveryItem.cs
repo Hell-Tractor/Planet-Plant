@@ -10,7 +10,9 @@ public class EmotionRecoveryItem : Item, IUsable {
             EmotionManager.Instance.EmotionValue += EmotionValueDelta;
     }
 
-    private void Start() {
+    protected new void Start() {
+        base.Start();
+
         this.Type = ItemType.Consumable;
     }
 }

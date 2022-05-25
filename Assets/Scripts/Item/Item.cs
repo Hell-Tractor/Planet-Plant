@@ -38,7 +38,7 @@ public class Item : MonoBehaviour {
     public float sigma1 = 0.5f;
     public float eps1 = 0;
 
-    private void Start() {
+    protected void Start() {
         this.UpdateCount();
         this.GetComponent<RectTransform>().localPosition = Vector3.zero;
         this.CurrentPrice = this.InitPrice;

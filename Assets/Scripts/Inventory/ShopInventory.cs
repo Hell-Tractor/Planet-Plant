@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 public class ShopInventory : Inventory {
+    private bool _isFirstTimeBuyEmotionRecItem = true;
+    
     public override void Init() {
         base.Init();
 
@@ -12,6 +14,14 @@ public class ShopInventory : Inventory {
                 return false;
             if ((AI.FSM.CharacterFSM.Instance?.Asset ?? -100) >= item.CurrentPrice) {
                 AI.FSM.CharacterFSM.Instance.Asset -= item.CurrentPrice;
+
+                Debug.Log("Item: " + item.CurrentPrice);
+                Debug.Log("Asset: " + AI.FSM.CharacterFSM.Instance.Asset);
+
+                if (item.Type == ItemType.Consumable && _isFirstTimeBuyEmotionRecItem) {
+                    _isFirstTimeBuyEmotionRecItem = false;
+                    DialogManager.Instance.ShowDialog(19);
+                }
                 return true;
             }
             return false;
