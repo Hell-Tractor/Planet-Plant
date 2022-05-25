@@ -4,6 +4,7 @@ public class MarketManager : MonoBehaviour {
     public RealMoneyShowManager RealMoneyShower = null;
     public MoneyScreeningManager MoneyScreeningManager = null;
     public GameObject Buyer = null;
+    public BubbleDialogController BubbleDialogController = null;
     private DialogManager _dialogManager;
     private int[] _jumpToRealMoneyShowDialogIDList = new int[] {
         39, 41, 61
@@ -19,11 +20,19 @@ public class MarketManager : MonoBehaviour {
             if (GlobalProperties.Instance.isFristTimeToMarket) {
                 GlobalProperties.Instance.isFristTimeToMarket = false;
 
-                // _dialogManager.ShowDialog(21);
+                _setupBeginnerGuide();
+                BubbleDialogController?.Show();
             }
         }
 
         // _dialogManager.ShowDialog(8);
+    }
+
+    private void _setupBeginnerGuide() {
+        BubbleDialogController?.Clear();
+        BubbleDialogController?.AddDialog("右边是情绪条，你现在的情绪值有点低，可以通过购买喜欢的物品来提高情绪值。情绪值若太低，有一定几率做出不理智事件哦！", () => {
+            return Input.GetMouseButton(0);
+        });
     }
 
     private void OnDestory() {
