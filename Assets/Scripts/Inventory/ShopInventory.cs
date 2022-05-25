@@ -21,6 +21,9 @@ public class ShopInventory : Inventory {
                 }
                 return true;
             }
+
+            ToolbarManager.Instance.ShowMessage("钱不够啦，买不起这个东西");
+
             return false;
         };
     }
