@@ -12,8 +12,8 @@ public class ShopInventory : Inventory {
             var item = slot.GetItem();
             if (item == null)
                 return false;
-            if ((AI.FSM.CharacterFSM.Instance?.Asset ?? -100) >= item.CurrentPrice) {
-                AI.FSM.CharacterFSM.Instance.Asset -= item.CurrentPrice;
+            if ((GlobalProperties.Instance?.PlayerAsset ?? -100) >= item.CurrentPrice) {
+                GlobalProperties.Instance.PlayerAsset -= item.CurrentPrice;
 
                 if (item.Type == ItemType.Consumable && _isFirstTimeBuyEmotionRecItem) {
                     _isFirstTimeBuyEmotionRecItem = false;

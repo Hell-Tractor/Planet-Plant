@@ -27,12 +27,7 @@ public class ToolbarManager : MonoBehaviour {
     }
 
     private void OnGUI() {
-        AI.FSM.CharacterFSM fsm = AI.FSM.CharacterFSM.Instance;
-        if (fsm != null) {
-            CoinCount.text = string.Format("{0:N2}元", fsm.Asset / 100.0f);
-        } else {
-            CoinCount.text = "N/A";
-        }
+        CoinCount.text = string.Format("{0:N2}元", GlobalProperties.Instance.PlayerAsset / 100.0f);
     }
 
     public void ChangeQuickSlotState() {

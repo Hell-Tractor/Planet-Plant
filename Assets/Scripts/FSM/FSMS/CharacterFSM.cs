@@ -5,7 +5,6 @@ namespace AI.FSM {
 public class CharacterFSM : FSMBase {
     [Header("属性")]
     public float Speed = 5.0f;
-    public int Asset = 30;
     
     public static CharacterFSM Instance = null;
     

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
             GlobalProperties.Instance.FamilyAsset += 100;
             // 每日零花钱
             GlobalProperties.Instance.FamilyAsset -= 2;
-            CharacterFSM.Asset += 2;
+            GlobalProperties.Instance.PlayerAsset += 2;
         };
     }
 }
