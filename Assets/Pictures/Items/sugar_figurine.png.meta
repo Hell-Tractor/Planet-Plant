@@ -107,9 +107,9 @@ TextureImporter:
       name: rabbit
       rect:
         serializedVersion: 2
-        x: 650
+        x: 575
         y: 491
-        width: 535
+        width: 676
         height: 676
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -128,9 +128,9 @@ TextureImporter:
       name: butterfly
       rect:
         serializedVersion: 2
-        x: 1309
-        y: 459
-        width: 555
+        x: 1259
+        y: 455
+        width: 670
         height: 670
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

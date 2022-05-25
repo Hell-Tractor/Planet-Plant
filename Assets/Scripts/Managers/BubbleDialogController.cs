@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,10 @@ public class BubbleDialogController : MonoBehaviour {
         _dialogQueue.Clear();
     }
 
-    public void Show() {
+    public async void Show(float delay_sec = 0) {
+        if (delay_sec > 0) {
+            await Task.Delay((int)(delay_sec * 1000));
+        }
         this.gameObject.SetActive(true);
         _currentDialog = 0;
         this.Text.text = _dialogQueue[_currentDialog.Value].Item1;

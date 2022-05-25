@@ -17,17 +17,17 @@ MonoBehaviour:
     Count: 8
   - Id: 
     Count: 0
+  - Id: planetplant:biscuit
+    Count: 5
+  - Id: planetplant:chestnut
+    Count: 15
   - Id: 
-    Count: 0
-  - Id: 
-    Count: 0
-  - Id: 
-    Count: 0
+    Count: 1
   - Id: planetplant:seed
     Count: 18
   - Id: 
     Count: 0
-  - Id: 
-    Count: 0
-  - Id: 
-    Count: 0
+  - Id: planetplant:sugarFigurineButterfly
+    Count: 4
+  - Id: planetplant:teaegg
+    Count: 20

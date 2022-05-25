@@ -107,12 +107,12 @@ TextureImporter:
       name: egg_0
       rect:
         serializedVersion: 2
-        x: 1224
-        y: 729
-        width: 205
-        height: 156
+        x: 1217
+        y: 698
+        width: 220
+        height: 220
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
