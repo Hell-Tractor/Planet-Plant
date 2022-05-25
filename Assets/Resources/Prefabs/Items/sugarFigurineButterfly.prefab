@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5533218329755147931}
   - component: {fileID: 5533218329755147934}
   - component: {fileID: 5533218329755147933}
-  - component: {fileID: 5533218329755147932}
+  - component: {fileID: 1981213345791108029}
   m_Layer: 5
   m_Name: sugarFigurineButterfly
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5533218329755147932
+--- !u!114 &1981213345791108029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5533218329755147930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe8516616ba0a84bb6e8477c724efcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a0570a0219f8cc46b4fe28fa5845d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Id: planetplant:sugarFigurineButterfly
@@ -103,6 +103,7 @@ MonoBehaviour:
   Mu1: 0
   sigma1: 0.5
   eps1: 0
+  EmotionValueDelta: 7
 --- !u!1 &7723332576540498980
 GameObject:
   m_ObjectHideFlags: 0

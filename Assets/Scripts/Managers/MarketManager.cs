@@ -25,7 +25,7 @@ public class MarketManager : MonoBehaviour {
                 _dialogManager.OnDialogEnd += (int dialogid) => {
                     if (dialogid == 7) {
                         _setupBeginnerGuide();
-                        BubbleDialogController?.Show(0.5f);
+                        BubbleDialogController?.Show(0.3f);
                     }
                 };
             }

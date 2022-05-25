@@ -76,8 +76,17 @@ public class Inventory : MonoBehaviour, ISaveLoad
             foreach (var i in hits) {
                 if (i.gameObject.CompareTag("InventorySlot")) {
                     Slot slot = i.gameObject.GetComponent<Slot>();
-                    if (OnItemClick?.Invoke(slot) ?? true)
+                    if (OnItemClick?.Invoke(slot) ?? true) {
+                        EmotionRecoveryItem item = slot.GetItem() as EmotionRecoveryItem;
+                        if (item != null) {
+                            item.Use(AI.FSM.CharacterFSM.Instance?.gameObject);
+                            var temp = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
+                            if (temp != null)
+                                Destroy(temp.gameObject);
+                            break;
+                        }
                         _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
+                    }
                     break;
                 }
             }
@@ -146,6 +155,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
                 }
                 Item item = Instantiate<GameObject>(temp).GetComponent<Item>();
                 item.Count = data.Items[i].Count;
+                item.UpdateCount();
                 _slots[i].SetItem(item);
             }
         }
