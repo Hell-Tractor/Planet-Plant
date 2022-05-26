@@ -30,9 +30,12 @@ public class TimeManager : MonoBehaviour, ISaveLoad
     private pp.DateTime _currentTime;
     private List<Tuple<pp.DateTime, Action>> _timedTasks = new List<Tuple<pp.DateTime, Action>>();
     /// <summary>
-    /// 当日期更新时触发
+    /// Called when day changes.
     /// </summary>
     public event Action OnDayChange;
+    /// <summary>
+    /// Called when season changes.
+    /// </summary>
     public event Action OnSeasonChange;
     
     private void Awake() {
@@ -47,20 +50,28 @@ public class TimeManager : MonoBehaviour, ISaveLoad
         // 启用自动保存/加载
         this.EnableAutoSaveLoad();
 
+        // set this game object to be persistent
         DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update() {
+        // update current time if not paused
         if (!_isPaused) {
             int lastDay = _currentTime.Day;
             int lastSeason = _currentTime.Season;
+            
+            // update the time
             _currentTime.AddSeconds(Time.deltaTime * TimeRate);
+
+            // check if the day/season changed
             if (lastDay != _currentTime.Day) {
                 OnDayChange?.Invoke();
             }
             if (lastSeason != _currentTime.Season) {
                 OnSeasonChange?.Invoke();
             }
+
+            // update the current time string
             CurrentTimeString = _currentTime.ToString();
             
             // 执行定时任务

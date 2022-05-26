@@ -72,11 +72,13 @@ public class Slot : MonoBehaviour
     /// <summary>
     /// 获取当前格子中物品
     /// </summary>
-    /// <returns></returns>
     public Item GetItem() {
         return _item;
     }
 
+    /// <summary>
+    /// Force to set item to slot
+    /// </summary>
     public void SetItem(Item item) {
         if (this._item != null)
             this.RemoveItem();

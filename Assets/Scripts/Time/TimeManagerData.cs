@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class for saving time manager data.
+/// </summary>
 [CreateAssetMenu(fileName = "TimeManagerData", menuName = "Data/TimeManagerData", order = 1)]
 public class TimeManagerData : ScriptableObject
 {

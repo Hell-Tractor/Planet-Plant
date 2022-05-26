@@ -78,6 +78,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
                     Slot slot = i.gameObject.GetComponent<Slot>();
                     if (OnItemClick?.Invoke(slot) ?? true) {
                         EmotionRecoveryItem item = slot.GetItem() as EmotionRecoveryItem;
+                        // if item is emotion recovery item, then use the item directly.
                         if (item != null) {
                             item.Use(AI.FSM.CharacterFSM.Instance?.gameObject);
                             var temp = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
@@ -93,6 +94,11 @@ public class Inventory : MonoBehaviour, ISaveLoad
         }
     }
     
+    /// <summary>
+    /// Add item to current inventory
+    /// </summary>
+    /// <param name="item">item to be added</param>
+    /// <returns>true if success</returns>
     public bool AddItem(Item item) {
         Slot slot = this._findEmptySlot();
         if (slot != null) {
@@ -112,14 +118,18 @@ public class Inventory : MonoBehaviour, ISaveLoad
         return null;
     }
 
+    // ISaveLoad interface implementation area
     #region ISaveLoad
     public void Save() {
+        // get data container
         var data = this.GetDataContainer() as InventoryData;
         if (data == null) {
             Debug.LogWarning("InventoryData is null");
             return;
         }
         data.Items.Clear();
+
+        // save data into container
         foreach (var i in _slots) {
             if (i.GetItem() != null) {
                 data.Items.Add(new InventoryData.ItemData {
@@ -136,11 +146,14 @@ public class Inventory : MonoBehaviour, ISaveLoad
     }
 
     public void Load() {
+        // get data container
         var data = this.GetDataContainer() as InventoryData;
         if (data == null) {
             Debug.LogWarning("InventoryData is null");
             return;
         }
+
+        // load data from container
         for (int i = 0; i < data.Items.Count; ++i) {
             if (i >= _slots.Length) {
                 Debug.LogWarning("InventoryData中的物品数量超过了Inventory的容量，已跳过");
@@ -149,6 +162,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
             if (data.Items[i].Id != "") {
                 _slots[i].RemoveItem();
                 GameObject temp = Resources.Load<GameObject>("Prefabs/Items/" + data.Items[i].Id.Split(':')[1]);
+                // if item not found, skip
                 if (temp == null) {
                     Debug.LogWarning("未找到物品：" + data.Items[i].Id);
                     continue;

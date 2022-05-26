@@ -1,8 +1,13 @@
+// UNUSED
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Base class for crops
+/// </summary>
 public class Crop : MonoBehaviour {
+    // properties of crop
     public WaterProperty Water = new WaterProperty();
     public PestProperty Pest = new PestProperty();
     public WeedProperty Weed = new WeedProperty();
@@ -66,16 +71,24 @@ public class Crop : MonoBehaviour {
         return Mathf.Max(res, 0.3f);
     }
 
+    /// <summary>
+    /// Harvest current crop
+    /// </summary>
     public void Harvest() {
+        // not ripe, cannot harvest
         if (_currentStage < StageDuration.Count - 1)
             return;
+        
+        // unsubscribe event from time manager
         TimeManager.Instance.OnDayChange -= _onDayChange;
         TimeManager.Instance.OnSeasonChange -= _onSeasonChange;
 
+        // get quantity
         int finalProduct = Mathf.RoundToInt(Productivity * _quantityCoefficient);
         Item item = Instantiate<GameObject>(ProductPrefab).GetComponent<Item>();
         item.Count = finalProduct;
 
+        // trying add product to inventory
         if (!PlayerInventory.AddItem(item)) {
             // todo 提示背包已满
         }

@@ -61,6 +61,9 @@ public class Item : MonoBehaviour {
             textComponent.text = Count.ToString();
     }
 
+    /// <summary>
+    /// Update Item Price using formula
+    /// </summary>
     public virtual void UpdatePrice() {
         float lastPrice = this.CurrentPrice;
         float f = Utils.Random.Normal(Mu0 + eps0 * (InitPrice - lastPrice), sigma0) * lastPrice +

@@ -4,10 +4,14 @@ using System;
 
 namespace Minigame.GM {
 
+    /// <summary>
+    /// Finite state machine for player in minigame.
+    /// </summary>
     public class PlayerFSM : FSMBase {
         public PlayerProperties Properties { get; private set; }
         
         protected override void init() {
+            // init player's direction
             this.transform.localScale = new Vector3(
                 Math.Abs(this.transform.localScale.x),
                 this.transform.localScale.y,
@@ -36,6 +40,7 @@ namespace Minigame.GM {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
+            // coin collecting
             if (other.CompareTag("Coin")) {
                 this.Properties.CoinCount++;
                 Destroy(other.gameObject);

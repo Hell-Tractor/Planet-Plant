@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class for saving inventory data.
+/// </summary>
 [CreateAssetMenu(fileName = "InventoryData", menuName = "Data/InventoryData", order = 1)]
 public class InventoryData : ScriptableObject
 {

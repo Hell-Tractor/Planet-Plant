@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace pp {
 
+    /// <summary>
+    /// Enum for all seasons.
+    /// </summary>
     public enum Season {
         Spring,
         Summer,
@@ -9,6 +12,9 @@ namespace pp {
         Winter
     }
 
+    /// <summary>
+    /// Class for Date and Time.
+    /// </summary>
     [System.Serializable]
     public class DateTime {
         [Tooltip("每日小时数"), Range(1, 999)]
@@ -24,6 +30,8 @@ namespace pp {
         public int Minute;
         [Range(0, 60)]
         public float Second;
+
+        #region Operator Overload
         public static bool operator <= (DateTime a, DateTime b) {
             if (a.Season != b.Season)
                 return a.Season <= b.Season;
@@ -46,6 +54,12 @@ namespace pp {
                 return a.Minute >= b.Minute;
             return a.Second >= b.Second;
         }
+        #endregion
+
+        /// <summary>
+        /// Add seconds to current time.
+        /// </summary>
+        /// <param name="seconds">seconds to be added</param>
         public void AddSeconds(float seconds) {
             Second += seconds;
             Minute += (int)Second / 60;
@@ -56,10 +70,15 @@ namespace pp {
             Hour %= HourPerDay;
         }
 
+        /// <summary>
+        /// Get the current season.
+        /// </summary>
+        /// <returns>the season enum</returns>
         public Season GetSeason() {
             return (Season)Season;
         }
 
+        // ! unfinished
         public override string ToString() {
             return "";
         }

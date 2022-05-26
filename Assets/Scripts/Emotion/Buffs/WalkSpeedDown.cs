@@ -9,6 +9,7 @@ namespace BUFF {
 
             AI.FSM.CharacterFSM fsm = target.GetComponent<AI.FSM.CharacterFSM>();
             if (fsm != null) {
+                // record initial speed
                 _initSpeed = fsm.Speed;
                 fsm.Speed = fsm.Speed * SpeedDownRate;
             }
@@ -19,6 +20,7 @@ namespace BUFF {
 
             AI.FSM.CharacterFSM fsm = target.GetComponent<AI.FSM.CharacterFSM>();
             if (fsm != null) {
+                // recover initial speed
                 fsm.Speed = _initSpeed;
             }
         }

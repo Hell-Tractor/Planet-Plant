@@ -1,10 +1,14 @@
 using UnityEngine;
 using Utils;
 
+/// <summary>
+/// Class for saving global properties
+/// </summary>
 public class GlobalProperties : Utils.Singleton<GlobalProperties>, Utils.ISaveLoad {
-    [Header("家庭总资产，单位：分")]
+    // unit: cent
     public int FamilyAsset = 200 * 100;
     public int PlayerAsset = 15;
+    // player properties
     public int PlayerIntelligence;
     public int PlayerPhysique;
     public bool isFirstTimeToField = true;
@@ -16,6 +20,8 @@ public class GlobalProperties : Utils.Singleton<GlobalProperties>, Utils.ISaveLo
         this.EnableAutoSaveLoad(false);
     }
     
+    // todo: to be finished
+    #region ISaveLoad
     public ScriptableObject GetDataContainer() {
         throw new System.NotImplementedException();
     }
@@ -27,4 +33,5 @@ public class GlobalProperties : Utils.Singleton<GlobalProperties>, Utils.ISaveLo
     public void Save() {
         throw new System.NotImplementedException();
     }
+    #endregion
 }

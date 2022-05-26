@@ -1,6 +1,11 @@
+// UNUSED
 using System;
 
+/// <summary>
+/// Base class of crop property.
+/// </summary>
 public abstract class CropProperty {
+    // property value
     public int Value { get; protected set; }
     protected int _maxValue = 100;
 

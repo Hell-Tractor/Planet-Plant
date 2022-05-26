@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Class for managing the market scene
+/// </summary>
 public class MarketManager : MonoBehaviour {
     public RealMoneyShowManager RealMoneyShower = null;
     public MoneyScreeningManager MoneyScreeningManager = null;
@@ -7,24 +10,31 @@ public class MarketManager : MonoBehaviour {
     public ShopInventory Shop = null;
     public BubbleDialogController BubbleDialogController = null;
     private DialogManager _dialogManager;
+    // after dialog with id in list is shown, RealMoneyShowDialog will be shown
     private int[] _jumpToRealMoneyShowDialogIDList = new int[] {
         39, 41, 61
     };
     private void Start() {
+        // init random number generator
         Random.InitState(System.DateTime.Now.Millisecond);
         
         _dialogManager = DialogManager.Instance;
+        // hide character: buyer
         Buyer?.SetActive(false);
         if (_dialogManager != null) {
+            // register event handler
             _dialogManager.AfterDialogChange += this._onMarketDialogChange;
 
             if (GlobalProperties.Instance.isFristTimeToMarket) {
+                // if is first time to market, show dialog
                 GlobalProperties.Instance.isFristTimeToMarket = false;
 
                 _dialogManager.ShowDialog(7);
                 _dialogManager.OnDialogEnd += (int dialogid) => {
                     if (dialogid == 7) {
+                        // show beginner's guide after dialog
                         _setupBeginnerGuide();
+                        // to avoid key processing error, delay showing bubble dialog
                         BubbleDialogController?.Show(0.3f);
                     }
                 };
@@ -34,10 +44,14 @@ public class MarketManager : MonoBehaviour {
         // _dialogManager.ShowDialog(8);
     }
 
+    /// <summary>
+    /// Init beginner's guide
+    /// </summary>
     private void _setupBeginnerGuide() {
         BubbleDialogController?.Clear();
         BubbleDialogController?.AddDialog("右边是情绪条，你现在的情绪值有点低，可以通过购买喜欢的物品来提高情绪值。情绪值若太低，有一定几率做出不理智事件哦！", () => {
             if (Input.GetMouseButton(0)) {
+                // show shop UI, and show the dialog after shop UI closed
                 Shop.Show(() => _dialogManager.ShowDialog(8));
                 return true;
             }
@@ -47,6 +61,7 @@ public class MarketManager : MonoBehaviour {
 
     private void OnDestory() {
         if (_dialogManager != null) {
+            // unregister event handler
             _dialogManager.AfterDialogChange -= this._onMarketDialogChange;
         }
     }
