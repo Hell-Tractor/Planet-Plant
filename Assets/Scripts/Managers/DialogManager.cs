@@ -32,11 +32,11 @@ class DialogAdapter {
         this._counter = startID;
         this._partID = partid;
 
-        // select all dialogs with given part id, and sort by dialog id
+        // select all dialogs with given part id
         this._dialogs = (
             from dialog in dialogs
             where dialog.PartID == partid
-            orderby dialog.ID
+            // orderby dialog.ID
             select dialog
         ).ToList();
 
