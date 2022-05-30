@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
@@ -5,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class HomeManager : MonoBehaviour {
     public BubbleDialogController BubbleDialogController = null;
+    public Transform BedPosition = null;
     private bool _isAfterMarketDialogShown = false;
     private void Start() {
         bool bubbleDialogExists = false;
@@ -12,6 +15,13 @@ public class HomeManager : MonoBehaviour {
         // if is first time go home, show beignner's guide
         if (GlobalProperties.Instance.isFirstTimeGoHome) {
             GlobalProperties.Instance.isFirstTimeGoHome = false;
+
+            // add action to after dialog change event: move player to given position
+            DialogManager.Instance.AfterDialogChange += (Data.DialogData dialogData) => {
+                if (dialogData?.ID == 69) {
+                    this._movePlayerAsync(1.1f);
+                }
+            };
 
             _setupBeginnerGuide();
             BubbleDialogController?.Show();
@@ -43,5 +53,10 @@ public class HomeManager : MonoBehaviour {
             }
             return false;
         });
+    }
+
+    private async void _movePlayerAsync(float delay) {
+        await Task.Delay(TimeSpan.FromSeconds(delay));
+        AI.FSM.CharacterFSM.Instance.transform.localPosition = BedPosition.localPosition;
     }
 }

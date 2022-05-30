@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 628c3114c0f5f044295a0515375fff24, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.2
+    m_LineSpacing: 1
   m_Text: "\u54CE\uFF0C\u771F\u4E0D\u884C\uFF0C\u8FD9\u5DF2\u7ECF\u662F\u6700\u4F4E\u4EF7\u4E86\uFF0C\u4FFA\u5A18\u4EB2\u624B\u505A\u7684\uFF0C\u8D28\u91CF\u53EF\u597D\u7740\u5462\u3002\uFF08\u9AB0\u5B50\u70B9\u6570+\u6280\u80FD\u70B9\u6570\u5927\u4E8E10\u65F6\u6210\u529F\uFF09"
 --- !u!1 &1033871114226914484
 GameObject:

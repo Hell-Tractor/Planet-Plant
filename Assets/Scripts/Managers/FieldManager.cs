@@ -56,7 +56,7 @@ public class FieldManager : MonoBehaviour {
             return false;
         });
 
-        _bubbleDialog.AddDialog("右键点击要种下的地块（只有左边第一列可种，其他田地需要花钱开垦）", () => {
+        _bubbleDialog.AddDialog("右键点击要种下的地块", () => {
             // hide when right clicked on plantable Field
             if (Input.GetMouseButtonDown(1)) {
                 var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f, 1 << LayerMask.NameToLayer("Farmland"));

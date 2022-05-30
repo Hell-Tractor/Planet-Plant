@@ -9,6 +9,7 @@ public class MarketManager : MonoBehaviour {
     public GameObject Buyer = null;
     public ShopInventory Shop = null;
     public BubbleDialogController BubbleDialogController = null;
+    public Item SpecialItem = null;
     private DialogManager _dialogManager;
     // after dialog with id in list is shown, RealMoneyShowDialog will be shown
     private int[] _jumpToRealMoneyShowDialogIDList = new int[] {
@@ -36,6 +37,9 @@ public class MarketManager : MonoBehaviour {
                         _setupBeginnerGuide();
                         // to avoid key processing error, delay showing bubble dialog
                         BubbleDialogController?.Show(0.3f);
+                    } else if (dialogid == 18) {
+                        // give special item to player
+                        QuickSlot.Instance.AddItem(Instantiate<Item>(SpecialItem));
                     }
                 };
             }

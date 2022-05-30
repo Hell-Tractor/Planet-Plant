@@ -7,6 +7,13 @@ using UnityEngine;
 public class QuickSlot : Inventory {
     // ! deprecated
     private int _selectedSlot = 0;
+    public static QuickSlot Instance;
+
+    private new void Awake() {
+        base.Awake();
+        
+        Instance = this;
+    }
 
     private new void Update() {
         base.Update();
