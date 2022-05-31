@@ -138,11 +138,6 @@ MonoBehaviour:
   MessageBarOverMap: {fileID: 3221482077148371208}
   CoinCount: {fileID: 7992598964124541527}
   MessageBar: {fileID: 1292823300892501223}
-  Canvas: {fileID: 0}
-  ShowToolBarSceneList:
-  - Home
-  - Market
-  - Field
 --- !u!1 &444375278383677245
 GameObject:
   m_ObjectHideFlags: 0

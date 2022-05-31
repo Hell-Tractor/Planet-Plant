@@ -290,4 +290,8 @@ public class DialogManager : MonoBehaviour {
         }
         return true;
     }
+
+    private void OnDestory() {
+        Instance = null;
+    }
 }

@@ -18,11 +18,6 @@ public class ToolbarManager : MonoBehaviour {
 
     public static ToolbarManager Instance = null;
     
-    [Header("UI显示设置")]
-    public Canvas Canvas = null;
-    // scenes with tool bar
-    public List<string> ShowToolBarSceneList = new List<string>();
-    
     private void Awake() {
         if (Instance != null) {
             Debug.LogError("ToolbarManager 重复实例");
@@ -40,11 +35,6 @@ public class ToolbarManager : MonoBehaviour {
         if (Map != null) {
             Map.SetActive(false);
         }
-
-        SceneManager.activeSceneChanged += (Scene oldScene, Scene newScene) => {
-            // if the scene is not in the list, hide the tool bar
-            Canvas?.gameObject.SetActive(ShowToolBarSceneList.Contains(newScene.name));
-        };
     }
 
     private void OnGUI() {

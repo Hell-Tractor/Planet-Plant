@@ -9,6 +9,7 @@ using Utils;
 /// </summary>
 public class Inventory : MonoBehaviour, ISaveLoad
 {
+    public Canvas canvas;
     [Tooltip("物品栏宽度"), Range(1, 16)]
     public int Width = 9;
     [Tooltip("物品栏高度"), Range(1, 8)]
@@ -81,12 +82,12 @@ public class Inventory : MonoBehaviour, ISaveLoad
                         // if item is emotion recovery item, then use the item directly.
                         if (item != null) {
                             item.Use(AI.FSM.CharacterFSM.Instance?.gameObject);
-                            var temp = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
+                            var temp = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse, canvas);
                             if (temp != null)
                                 Destroy(temp.gameObject);
                             break;
                         }
-                        _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse);
+                        _itemFollowMouse = i.gameObject.GetComponent<Slot>().StoreItem(_itemFollowMouse, canvas);
                     }
                     break;
                 }
@@ -102,7 +103,7 @@ public class Inventory : MonoBehaviour, ISaveLoad
     public bool AddItem(Item item) {
         Slot slot = this._findEmptySlot();
         if (slot != null) {
-            slot.StoreItem(item);
+            slot.StoreItem(item, canvas);
             return true;
         }
         return false;

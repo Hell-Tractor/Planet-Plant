@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class FieldManager : MonoBehaviour {
     public BubbleDialogController _bubbleDialog;
+    public int CountNeedToPlant = 3;
+    private int _plantedCount = 0;
 
     /// <summary>
     /// Init beginner's guide
@@ -83,5 +85,28 @@ public class FieldManager : MonoBehaviour {
 
         // resume time system
         TimeManager.Instance.Resume();
+    }
+
+    private void Update() {
+        // record the planted count
+        if (Input.GetMouseButtonDown(1)) {
+            var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0f, 1 << LayerMask.NameToLayer("Farmland"));
+            _plantedCount += hit.collider?.GetComponent<Farmland>() != null ? 1 : 0;
+
+            
+        }
+        // if planted enough plants, show go back home dialog after delay
+        if (_plantedCount >= CountNeedToPlant && !GlobalProperties.Instance.goHomeDialogShowed && Inventory._itemFollowMouse == null) {
+            GlobalProperties.Instance.goHomeDialogShowed = true;
+            Invoke("_showGoHomeDialog", 1f);
+        }
+    }
+
+    /// <summary>
+    /// Set time to evening and show go home dialog
+    /// </summary>
+    private void _showGoHomeDialog() {
+        // PermanentNode.Instance.EnableBrightnessMask(true);
+        DialogManager.Instance.ShowDialog(5);
     }
 }

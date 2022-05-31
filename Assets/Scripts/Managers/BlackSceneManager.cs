@@ -15,12 +15,15 @@ public class BlackSceneManager : MonoBehaviour {
         SkillPointDialog?.SetActive(true);
         if (SkillPointDialog != null) {
             SkillPointDialog.GetComponent<SkillPointAllocateManager>().OnConfirm += () => {
+                this.GetComponent<AudioSource>().Play();
                 _dialogManager.ShowDialog(1);
             };
         }
         // load Field scene after dialog
         _dialogManager.OnDialogEnd += (int id) => {
-            SceneManager.LoadScene("Field");
+            if (id == 1) {
+                SceneManager.LoadScene("Field");
+            }
         };
 
     }

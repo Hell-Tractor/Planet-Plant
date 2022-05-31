@@ -32,16 +32,16 @@ public class Slot : MonoBehaviour
     /// 存储物品
     /// </summary>
     /// <param name="item">要存储的物品</param>
-    /// <param name="inventory">物品栏</param>
+    /// <param name="canvas">当前Inventory所在的canvas</param>
     /// <returns>若存储前Slot为空返回null，否则返回Slot中Item</returns>
-    public virtual Item StoreItem(Item item) {
+    public virtual Item StoreItem(Item item, Canvas canvas) {
         if (this._item?.EqualTo(item) == true) {
             this._item.Count += item.Count;
             this._item.UpdateCount();
             Destroy(item.gameObject);
             return null;
         } else {
-            this._item?.transform.SetParent(FindObjectOfType<Canvas>().transform);
+            this._item?.transform.SetParent(canvas.transform);
             var temp = this._item;
             this._item = item;
             this._item?.transform.SetParent(this.transform);

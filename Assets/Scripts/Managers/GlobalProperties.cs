@@ -15,6 +15,7 @@ public class GlobalProperties : Utils.Singleton<GlobalProperties>, Utils.ISaveLo
     public bool isFirstTimeToGoingMarket = true;
     public bool isFristTimeToMarket = true;
     public bool isFirstTimeGoHome = true;
+    public bool goHomeDialogShowed = false;
 
     public GlobalProperties() {
         this.EnableAutoSaveLoad(false);

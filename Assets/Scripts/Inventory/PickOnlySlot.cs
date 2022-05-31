@@ -10,8 +10,9 @@ public class PickOnlySlot : Slot {
     /// exchange item with item in slot
     /// </summary>
     /// <param name="item">item to be stored into slot, allow null</param>
+    /// <param name="canvas">canvas of current inventory</param>
     /// <returns>exchanged item, might be null</returns>
-    public override Item StoreItem(Item item) {
+    public override Item StoreItem(Item item, Canvas canvas) {
         // if slot is empty or comming item is not save with item in slot, do nothing
         if (!this._item || item != null && this._item.EqualTo(item) != true)
             return item;
@@ -28,7 +29,7 @@ public class PickOnlySlot : Slot {
         
         if (item == null) {
             // instantiate a new item if comming item is null
-            Item newItem = Instantiate<GameObject>(this._item.gameObject, FindObjectOfType<Canvas>().transform).GetComponent<Item>();
+            Item newItem = Instantiate<GameObject>(this._item.gameObject, canvas.transform).GetComponent<Item>();
             newItem.Count = 1;
             newItem.UpdateCount();
             return newItem;
