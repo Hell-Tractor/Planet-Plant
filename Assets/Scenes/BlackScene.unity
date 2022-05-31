@@ -456,6 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillPointDialog: {fileID: 654914730}
+  Bgm: {fileID: 8300000, guid: e0ec7dcff6baa8e49acb4c895edf5a94, type: 3}
 --- !u!114 &1410261693
 MonoBehaviour:
   m_ObjectHideFlags: 0

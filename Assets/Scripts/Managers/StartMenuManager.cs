@@ -33,7 +33,6 @@ public class StartMenuManager : MonoBehaviour {
             // wait given time, then enable scene change
             await Task.Delay(TimeSpan.FromSeconds(WaitSeconds));
             sceneLoader.allowSceneActivation = true;
-            PermanentNode.Instance.GetComponent<AudioSource>().Play();
         }
     }
 

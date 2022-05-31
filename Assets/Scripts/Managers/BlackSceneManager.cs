@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 /// <summary>
 /// Manager for scene: blackscene.
 /// </summary>
 public class BlackSceneManager : MonoBehaviour {
     public GameObject SkillPointDialog = null;
-    
+    public AudioClip Bgm;    
     private DialogManager _dialogManager;
     private void Start() {
         _dialogManager = this.GetComponent<DialogManager>();
@@ -26,5 +25,13 @@ public class BlackSceneManager : MonoBehaviour {
             }
         };
 
+    }
+
+    private void OnDisable() {
+        // change bgm
+        var audioSrouce = PermanentNode.Instance.GetComponent<AudioSource>();
+        audioSrouce.Stop();
+        audioSrouce.clip = Bgm;
+        audioSrouce.Play();
     }
 }
