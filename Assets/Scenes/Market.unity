@@ -268,6 +268,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &336050446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 336050447}
+  m_Layer: 0
+  m_Name: SellPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &336050447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336050446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.93, y: -1.4806, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &346722477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1135,6 +1166,7 @@ MonoBehaviour:
   Shop: {fileID: 1867941560}
   BubbleDialogController: {fileID: 2080546556}
   SpecialItem: {fileID: 3521293374396571072, guid: dc7d057eae603d54eb8a7b3240236af9, type: 3}
+  SellPoint: {fileID: 336050447}
 --- !u!1001 &1094905764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1356,7 +1388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3762917563963047045, guid: c43b493f970fb6147a7c275fe873e083, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.93
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 3762917563963047045, guid: c43b493f970fb6147a7c275fe873e083, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6476,6 +6508,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3375886496586456729, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 424717120}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b13de34e72c7e44096191e525430aae, type: 3}
 --- !u!114 &1867941560 stripped

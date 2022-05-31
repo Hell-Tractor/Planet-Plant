@@ -10,7 +10,7 @@ public class HomeManager : MonoBehaviour {
     public Transform BedPosition = null;
     private bool _isAfterMarketDialogShown = false;
     private void Start() {
-        bool bubbleDialogExists = false;
+        bool isShowingDialog4 = false;
         
         // if is first time go home, show beignner's guide
         if (GlobalProperties.Instance.isFirstTimeGoHome) {
@@ -19,17 +19,31 @@ public class HomeManager : MonoBehaviour {
             // add action to after dialog change event: move player to given position
             DialogManager.Instance.AfterDialogChange += (Data.DialogData dialogData) => {
                 if (dialogData?.ID == 69) {
-                    this._movePlayerAsync(1.1f);
+                    this._movePlayerAsync(1.5f);
+                    AI.FSM.CharacterFSM.Instance.GetComponent<SpriteRenderer>().enabled = false;
+                } else if (dialogData?.ID == 26) {
+                    AI.FSM.CharacterFSM.Instance.GetComponent<SpriteRenderer>().enabled = true;
+                }
+            };
+
+            DialogManager.Instance.OnDialogEnd += (int dialogid) => {
+                if (dialogid == 4) {
+                    BubbleDialogController?.Show(0.5f);
                 }
             };
 
             _setupBeginnerGuide();
-            BubbleDialogController?.Show();
-            bubbleDialogExists = true;
+            if (GlobalProperties.Instance.isFristTimeToMarket == false) {
+                DialogManager.Instance.ShowDialog(13);
+                _isAfterMarketDialogShown = true;
+            } else {
+                DialogManager.Instance.ShowDialog(4);
+                isShowingDialog4 = true;
+            }
         }
 
         // if has been to market and not shown dialog, show dialog
-        if (!_isAfterMarketDialogShown && !bubbleDialogExists) {
+        if (!_isAfterMarketDialogShown && !isShowingDialog4) {
             DialogManager.Instance.ShowDialog(13);
             _isAfterMarketDialogShown = true;
         }
@@ -41,17 +55,7 @@ public class HomeManager : MonoBehaviour {
     private void _setupBeginnerGuide() {
         BubbleDialogController?.Clear();
         BubbleDialogController?.AddDialog("每天至少要上交家里1块钱 剩余的钱存起来当做学费 需要在九月开学之前攒够学费", () => {
-            if (Input.GetMouseButton(0)) {
-                // after hiding bubble, show dialog
-                if (GlobalProperties.Instance.isFristTimeToMarket == false) {
-                    DialogManager.Instance.ShowDialog(13);
-                    _isAfterMarketDialogShown = true;
-                } else {
-                    DialogManager.Instance.ShowDialog(4);
-                }
-                return true;
-            }
-            return false;
+            return Input.GetMouseButton(0);
         });
     }
 

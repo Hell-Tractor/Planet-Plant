@@ -10,6 +10,7 @@ public class MarketManager : MonoBehaviour {
     public ShopInventory Shop = null;
     public BubbleDialogController BubbleDialogController = null;
     public Item SpecialItem = null;
+    public Transform SellPoint = null;
     private DialogManager _dialogManager;
     // after dialog with id in list is shown, RealMoneyShowDialog will be shown
     private int[] _jumpToRealMoneyShowDialogIDList = new int[] {
@@ -56,7 +57,10 @@ public class MarketManager : MonoBehaviour {
         BubbleDialogController?.AddDialog("右边是情绪条，你现在的情绪值有点低，可以通过购买喜欢的物品来提高情绪值。情绪值若太低，有一定几率做出不理智事件哦！", () => {
             if (Input.GetMouseButton(0)) {
                 // show shop UI, and show the dialog after shop UI closed
-                Shop.Show(() => _dialogManager.ShowDialog(8));
+                Shop.Show(() => {
+                    AI.FSM.CharacterFSM.Instance.transform.position = SellPoint.position;
+                    _dialogManager.ShowDialog(8);
+                });
                 return true;
             }
             return false;

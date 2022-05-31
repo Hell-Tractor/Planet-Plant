@@ -611,6 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bubbleDialog: {fileID: 1998183282}
+  CountNeedToPlant: 3
 --- !u!4 &450751567
 Transform:
   m_ObjectHideFlags: 0
@@ -9519,11 +9520,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3762917563963047045, guid: c43b493f970fb6147a7c275fe873e083, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.44
+      value: 5.33
       objectReference: {fileID: 0}
     - target: {fileID: 3762917563963047045, guid: c43b493f970fb6147a7c275fe873e083, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.81
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 3762917563963047045, guid: c43b493f970fb6147a7c275fe873e083, type: 3}
       propertyPath: m_LocalPosition.z
