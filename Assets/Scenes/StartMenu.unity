@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 175332588}
   - component: {fileID: 175332590}
   - component: {fileID: 175332589}
+  - component: {fileID: 175332591}
   m_Layer: 5
   m_Name: Rain
   m_TagString: Untagged
@@ -199,6 +200,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175332587}
   m_CullTransparentMesh: 1
+--- !u!95 &175332591
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175332587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69c0283872d05fd46a8bc73463c4da38, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &195081505
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +231,6 @@ GameObject:
   - component: {fileID: 195081506}
   - component: {fileID: 195081508}
   - component: {fileID: 195081507}
-  - component: {fileID: 195081511}
   - component: {fileID: 195081512}
   - component: {fileID: 195081510}
   m_Layer: 5
@@ -296,26 +316,6 @@ MonoBehaviour:
   StartGameBackground: {fileID: 21300000, guid: fb408abbf568654459b9ccccc556710e, type: 3}
   WaitSeconds: 1.5
   StartGameSound: {fileID: 8300000, guid: dade47f25e557ed42977d750d0964ac2, type: 3}
---- !u!95 &195081511
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195081505}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 69c0283872d05fd46a8bc73463c4da38, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &195081512
 AudioSource:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -713.7592, y: -73}
+  m_AnchoredPosition: {x: -700, y: -104}
   m_SizeDelta: {x: 292.2055, y: 77.0563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517800202
@@ -1474,7 +1474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -713.7592, y: -290}
+  m_AnchoredPosition: {x: -713.7592, y: -332}
   m_SizeDelta: {x: 292.2055, y: 77.0563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1942352151
