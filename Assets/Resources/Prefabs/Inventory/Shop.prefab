@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfda07f8b618544479321cf90b5252c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   Width: 3
   Height: 3
   SlotPrefab: {fileID: 3249180032422103845, guid: 76e06e5b6f09f2148bf52d38e99dd5ac, type: 3}
@@ -422,5 +423,5 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.2
   m_Text: "\u540D\u5B57\n\u4EF7\u683C\n\u63CF\u8FF0"

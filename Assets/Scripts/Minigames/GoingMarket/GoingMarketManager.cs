@@ -15,6 +15,11 @@ public class GoingMarketManager : MonoBehaviour {
     public float ExitDectectionRadius = 0.1f;
     public BubbleDialogController BubbleDialogController = null;
 
+    private void Awake() {
+        // pause default bgm, enable bgm of minigame.
+        PermanentNode.Instance.GetComponent<AudioSource>().Pause();
+    }
+
     private void Start() {
         // if first time playing minigame, show beginner's guide.
         if (GlobalProperties.Instance.isFirstTimeToGoingMarket) {
@@ -40,5 +45,11 @@ public class GoingMarketManager : MonoBehaviour {
         if (hit.collider != null) {
             SceneManager.LoadScene("Market");
         }
+    }
+
+    private void OnDisable() {
+        // disable bgm of minigame, enable default bgm.
+        this.GetComponent<AudioSource>().Stop();
+        PermanentNode.Instance.GetComponent<AudioSource>().UnPause();
     }
 }
