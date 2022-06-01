@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BubbleDialogController: {fileID: 324506659}
   BedPosition: {fileID: 1530016066}
+  Sister: {fileID: 167999155}
 --- !u!1001 &148516296
 PrefabInstance:
   m_ObjectHideFlags: 0

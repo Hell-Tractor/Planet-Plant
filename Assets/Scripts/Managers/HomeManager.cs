@@ -8,6 +8,7 @@ using UnityEngine;
 public class HomeManager : MonoBehaviour {
     public BubbleDialogController BubbleDialogController = null;
     public Transform BedPosition = null;
+    public GameObject Sister = null;
     private bool _isAfterMarketDialogShown = false;
     private void Start() {
         bool isShowingDialog4 = false;
@@ -30,13 +31,15 @@ public class HomeManager : MonoBehaviour {
 
             DialogManager.Instance.OnDialogEnd += (int dialogid) => {
                 if (dialogid == 4) {
-                    BubbleDialogController?.Show(0.5f);
                     EmotionManager.Instance.EmotionValue -= 20;
+                } else if (dialogid == 13) {
+                    BubbleDialogController?.Show(0.5f);
                 }
             };
 
             _setupBeginnerGuide();
             if (GlobalProperties.Instance.isFristTimeToMarket == false) {
+                Sister.SetActive(false);
                 DialogManager.Instance.ShowDialog(13);
                 _isAfterMarketDialogShown = true;
             } else {
@@ -47,6 +50,7 @@ public class HomeManager : MonoBehaviour {
 
         // if has been to market and not shown dialog, show dialog
         if (!_isAfterMarketDialogShown && !isShowingDialog4) {
+            Sister.SetActive(false);
             DialogManager.Instance.ShowDialog(13);
             _isAfterMarketDialogShown = true;
         }

@@ -752,7 +752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RealMoney: {fileID: 388840601}
   FakeMoney: {fileID: 2079604759}
-  FakeMoneyRate: 0
+  FakeMoneyRate: 0.5
   IsRealMoney: 0
 --- !u!1 &707494389
 GameObject:
