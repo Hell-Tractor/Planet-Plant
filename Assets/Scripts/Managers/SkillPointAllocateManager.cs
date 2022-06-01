@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class SkillPointAllocateManager : MonoBehaviour {
     // all type of skill points
     private Dictionary<string, SkillPointChanger> _skillPointChangers;
 
+    public AudioSource AudioSource = null;
     public event Action OnConfirm;
 
     public void Start() {
@@ -63,13 +65,18 @@ public class SkillPointAllocateManager : MonoBehaviour {
     /// <summary>
     /// Close the dialog and save the changes.
     /// </summary>
-    public void Close() {
+    public async void Close() {
+        // Play sound
+        AudioSource.Play();
+        await Task.Delay(350);
+
         // save to GlobalProperties
         GlobalProperties.Instance.PlayerIntelligence = _skillPointChangers["Intelligence"].Points;
         GlobalProperties.Instance.PlayerPhysique = _skillPointChangers["Physique"].Points;
-        this.gameObject.SetActive(false);
 
         // call the confirm event
         OnConfirm?.Invoke();
+
+        this.gameObject.SetActive(false);
     }
 }
