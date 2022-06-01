@@ -15,6 +15,7 @@ public class BlackSceneManager : MonoBehaviour {
         if (SkillPointDialog != null) {
             SkillPointDialog.GetComponent<SkillPointAllocateManager>().OnConfirm += () => {
                 this.GetComponent<AudioSource>().Play();
+                PermanentNode.Instance.GetComponent<AudioSource>().Stop();
                 _dialogManager.ShowDialog(1);
             };
         }
@@ -30,7 +31,8 @@ public class BlackSceneManager : MonoBehaviour {
     private void OnDisable() {
         // change bgm
         var audioSrouce = PermanentNode.Instance.GetComponent<AudioSource>();
-        audioSrouce.Stop();
+        if (audioSrouce.isPlaying)
+            audioSrouce.Stop();
         audioSrouce.clip = Bgm;
         audioSrouce.Play();
     }

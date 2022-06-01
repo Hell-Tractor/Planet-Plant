@@ -21,14 +21,17 @@ public class HomeManager : MonoBehaviour {
                 if (dialogData?.ID == 69) {
                     this._movePlayerAsync(1.5f);
                     AI.FSM.CharacterFSM.Instance.GetComponent<SpriteRenderer>().enabled = false;
+                    PermanentNode.Instance.EnableBrightnessMask(true, true);
                 } else if (dialogData?.ID == 26) {
                     AI.FSM.CharacterFSM.Instance.GetComponent<SpriteRenderer>().enabled = true;
+                    PermanentNode.Instance.EnableBrightnessMask(false, true);
                 }
             };
 
             DialogManager.Instance.OnDialogEnd += (int dialogid) => {
                 if (dialogid == 4) {
                     BubbleDialogController?.Show(0.5f);
+                    EmotionManager.Instance.EmotionValue -= 20;
                 }
             };
 

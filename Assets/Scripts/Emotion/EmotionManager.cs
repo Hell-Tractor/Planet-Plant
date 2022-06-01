@@ -36,13 +36,19 @@ public class EmotionManager : MonoBehaviour
     [Tooltip("恶性事件触发概率"), Range(0, 1)]
     public float PassiveEventRate;
 
-    public GameObject Player;
+    public GameObject Player {
+        get {
+            return AI.FSM.CharacterFSM.Instance.gameObject;
+        }
+    }
 
     public static EmotionManager Instance = null;
 
-    private void Start() {
+    private void Awake() {
         Instance = this;
-
+    }
+    
+    private void Start() {
         foreach (BuffID id in Enum.GetValues(typeof(BuffID))) {
             var type = Type.GetType("BUFF." + id.ToString());
             BuffBase buff = Activator.CreateInstance(type) as BuffBase;

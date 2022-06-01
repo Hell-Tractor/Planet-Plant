@@ -17,6 +17,7 @@ public class DialogUIController : MonoBehaviour {
     public float FullScreenShowDuration = 1f;
     public float FullScreenHideDuration = 2f;
     public RandomController RandomController;
+    public AudioSource AudioSource;
     /// <summary>
     /// if true, no key event will be processed.
     /// </summary>
@@ -175,6 +176,11 @@ public class DialogUIController : MonoBehaviour {
             SpeakerTransform.GetComponent<Text>().text = speakerName;
             ContentTransform.GetComponent<Text>().text = content;
             DrawingImage.sprite = drawing;
+            
+            // play sound
+            if (AudioSource.isPlaying)
+                AudioSource.Stop();
+            AudioSource.Play();
         }
     }
 

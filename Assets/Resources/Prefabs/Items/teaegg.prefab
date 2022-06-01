@@ -103,7 +103,7 @@ MonoBehaviour:
   Mu1: 0
   sigma1: 0.5
   eps1: 0
-  EmotionValueDelta: 5
+  EmotionValueDelta: 30
 --- !u!1 &8568693966639794066
 GameObject:
   m_ObjectHideFlags: 0
