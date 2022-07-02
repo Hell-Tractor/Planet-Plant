@@ -1,5 +1,7 @@
 # Planet Plant
 
+__This repo is no longer maintained__
+
 Click [here](./docs/ProjectDetails.md) to see details and future plans.
 
 ## TODO
